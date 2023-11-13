@@ -39,14 +39,13 @@ services:
     build:
       dockerfile: Dockerfile
       context: data/postgres
-    container_name: fitness_app_project
+    container_name: fitness_app_db
     restart: always
     ports:
       - "5677:5432"
     networks:
       idc-net:
         ipv4_address: 172.100.10.18
-
 
   web:
       build: ./data/app-data/
