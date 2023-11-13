@@ -35,6 +35,19 @@ services:
           idc-net:
               ipv4_address: 172.100.10.10
 
+  postgres-db:
+    build:
+      dockerfile: Dockerfile
+      context: data/postgres
+    container_name: fitness_app_project
+    restart: always
+    ports:
+      - "5677:5432"
+    networks:
+      idc-net:
+        ipv4_address: 172.100.10.18
+
+
   web:
       build: ./data/app-data/
       container_name: app
