@@ -1,5 +1,5 @@
 #node red files
-iot_project\cloud_Infrastructure\data\node-red-data\.npm\*
+*.log
 
 #intellij auto generated files
 .idea

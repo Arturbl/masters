@@ -4,13 +4,13 @@ import time
 def on_connect(client, userdata, flags, return_code):
     if return_code == 0:
         print("connected")
-        client.subscribe("idc/iris")
+        client.subscribe("idc/fitness")
     else:
         print("could not connect, return code:", return_code)
 
 
 def on_message(client, userdata, message):
-    print("Received message: " ,str(message.payload.decode("utf-8")))
+    print("Received message: ", str(message.payload.decode("utf-8")))
 
 
 broker_hostname ="localhost"

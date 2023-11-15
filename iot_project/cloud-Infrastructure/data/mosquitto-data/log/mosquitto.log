@@ -40,3 +40,18 @@
 1699897577: mosquitto version 2.0.18 running
 1699897584: New connection from 172.100.10.15:58894 on port 1883.
 1699897584: New client connected from 172.100.10.15:58894 as nodered_48300a255be1c3ab (p2, c1, k60).
+1699898787: Client nodered_48300a255be1c3ab has exceeded timeout, disconnecting.
+1699898802: New connection from 172.100.10.15:58970 on port 1883.
+1699898802: New client connected from 172.100.10.15:58970 as nodered_48300a255be1c3ab (p2, c1, k60).
+1699899377: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1699901178: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1699901631: New connection from 172.100.10.1:49660 on port 1883.
+1699901631: Client <unknown> disconnected due to protocol error.
+1699901632: New connection from 172.100.10.1:49664 on port 1883.
+1699901632: Client <unknown> disconnected due to protocol error.
+1699910539: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1699910539: Client nodered_48300a255be1c3ab has exceeded timeout, disconnecting.
+1699910554: New connection from 172.100.10.15:59360 on port 1883.
+1699910554: New client connected from 172.100.10.15:59360 as nodered_48300a255be1c3ab (p2, c1, k60).
+1699910648: mosquitto version 2.0.18 terminating
+1699910648: Saving in-memory database to /mosquitto/data//mosquitto.db.

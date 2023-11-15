@@ -38,7 +38,7 @@ services:
   postgres-db:
     build:
       dockerfile: Dockerfile
-      context: data/postgres
+      context: data/postgres-data
     container_name: fitness_app_db
     restart: always
     ports:
