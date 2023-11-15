@@ -227,3 +227,43 @@
 1700068295: Client nodered_fb707dcc9e4f330e disconnected.
 1700068295: mosquitto version 2.0.18 terminating
 1700068295: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700068402: mosquitto version 2.0.18 starting
+1700068402: Config loaded from /mosquitto/config/mosquitto.conf.
+1700068402: Opening ipv4 listen socket on port 1883.
+1700068402: mosquitto version 2.0.18 running
+1700068407: New connection from 172.100.10.15:60354 on port 1883.
+1700068407: New client connected from 172.100.10.15:60354 as nodered_d8a33fc0424d83be (p2, c1, k60).
+1700069117: New connection from 172.100.10.1:45180 on port 1883.
+1700069117: New client connected from 172.100.10.1:45180 as Client2 (p2, c1, k60).
+1700069131: New connection from 172.100.10.1:45186 on port 1883.
+1700069131: New client connected from 172.100.10.1:45186 as Client1 (p2, c1, k60).
+1700069133: Client Client1 closed its connection.
+1700069149: Client Client2 closed its connection.
+1700069776: New connection from 172.100.10.1:45236 on port 1883.
+1700069776: New client connected from 172.100.10.1:45236 as Client2 (p2, c1, k60).
+1700069784: New connection from 172.100.10.1:45240 on port 1883.
+1700069784: New client connected from 172.100.10.1:45240 as Client1 (p2, c1, k60).
+1700069786: Client Client1 closed its connection.
+1700070202: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700071633: Client nodered_d8a33fc0424d83be has exceeded timeout, disconnecting.
+1700071633: Client Client2 has exceeded timeout, disconnecting.
+1700071636: New connection from 172.100.10.1:45324 on port 1883.
+1700071636: New client connected from 172.100.10.1:45324 as Client2 (p2, c1, k60).
+1700071648: New connection from 172.100.10.15:60568 on port 1883.
+1700071648: New client connected from 172.100.10.15:60568 as nodered_d8a33fc0424d83be (p2, c1, k60).
+1700072003: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700072089: New connection from 172.100.10.1:45362 on port 1883.
+1700072089: Client Client2 already connected, closing old connection.
+1700072089: New client connected from 172.100.10.1:45362 as Client2 (p2, c1, k60).
+1700072090: New connection from 172.100.10.1:45366 on port 1883.
+1700072090: Client Client2 already connected, closing old connection.
+1700072090: New client connected from 172.100.10.1:45366 as Client2 (p2, c1, k60).
+1700072117: New connection from 172.100.10.1:45374 on port 1883.
+1700072117: New client connected from 172.100.10.1:45374 as Client1 (p2, c1, k60).
+1700072119: Client Client1 closed its connection.
+1700072126: Client Client2 closed its connection.
+1700072144: New connection from 172.100.10.1:45380 on port 1883.
+1700072144: New client connected from 172.100.10.1:45380 as Client2 (p2, c1, k60).
+1700072150: New connection from 172.100.10.1:45384 on port 1883.
+1700072150: New client connected from 172.100.10.1:45384 as Client1 (p2, c1, k60).
+1700072151: Client Client1 closed its connection.
