@@ -9,8 +9,8 @@ class SubPub:
     def on_connect(self, userdata, flags, return_code):
         if return_code == 0:
             print("connected")
-        else:
-            print("could not connect, return code:", return_code)
+            return
+        print("could not connect, return code:", return_code)
 
 
     def send_message(self, topic, msgArray):

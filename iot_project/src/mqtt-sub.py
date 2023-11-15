@@ -4,7 +4,6 @@ from service.subService import SubService
 import time
 
 CLIENT = mqtt.Client("Client2")
-
 subService = SubService(CLIENT)
 mqtt_listener = threading.Thread(target=subService.mqtt_thread)
 

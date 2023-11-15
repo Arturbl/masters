@@ -267,3 +267,12 @@
 1700072150: New connection from 172.100.10.1:45384 on port 1883.
 1700072150: New client connected from 172.100.10.1:45384 as Client1 (p2, c1, k60).
 1700072151: Client Client1 closed its connection.
+1700073804: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700075605: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700078981: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700078981: Client nodered_d8a33fc0424d83be has exceeded timeout, disconnecting.
+1700078981: Client Client2 has exceeded timeout, disconnecting.
+1700079003: New connection from 172.100.10.1:45654 on port 1883.
+1700079003: New client connected from 172.100.10.1:45654 as Client2 (p2, c1, k60).
+1700079003: New connection from 172.100.10.15:60896 on port 1883.
+1700079003: New client connected from 172.100.10.15:60896 as nodered_d8a33fc0424d83be (p2, c1, k60).
