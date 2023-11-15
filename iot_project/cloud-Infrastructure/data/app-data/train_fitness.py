@@ -36,7 +36,7 @@ iris_data = pd.read_csv('data/training.csv', sep=';')
 
 missing_value_describe(iris_data)
 
-iris_data = iris_data.drop(['date'], axis='columns')
+iris_data = iris_data.drop(['date'], axis='columns') #some hchange
 iris_data = iris_data.drop(['time'], axis='columns')
 iris_data.columns
 
