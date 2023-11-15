@@ -63,3 +63,34 @@
 1700055863: New client connected from 172.100.10.15:40788 as nodered_857736db22740cac (p2, c1, k60).
 1700055892: mosquitto version 2.0.18 terminating
 1700055892: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700056885: mosquitto version 2.0.18 starting
+1700056885: Config loaded from /mosquitto/config/mosquitto.conf.
+1700056885: Opening ipv4 listen socket on port 1883.
+1700056885: mosquitto version 2.0.18 running
+1700056901: New connection from 172.100.10.15:40866 on port 1883.
+1700056901: New client connected from 172.100.10.15:40866 as nodered_cb781f5518646424 (p2, c1, k60).
+1700057072: mosquitto version 2.0.18 terminating
+1700057072: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700057099: mosquitto version 2.0.18 starting
+1700057099: Config loaded from /mosquitto/config/mosquitto.conf.
+1700057099: Opening ipv4 listen socket on port 1883.
+1700057099: mosquitto version 2.0.18 running
+1700057109: New connection from 172.100.10.15:40888 on port 1883.
+1700057109: New client connected from 172.100.10.15:40888 as nodered_10a13425b0c8a005 (p2, c1, k60).
+1700057442: Client nodered_10a13425b0c8a005 disconnected.
+1700057443: mosquitto version 2.0.18 terminating
+1700057443: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700057463: mosquitto version 2.0.18 starting
+1700057463: Config loaded from /mosquitto/config/mosquitto.conf.
+1700057463: Opening ipv4 listen socket on port 1883.
+1700057463: mosquitto version 2.0.18 running
+1700057473: New connection from 172.100.10.15:40920 on port 1883.
+1700057473: New client connected from 172.100.10.15:40920 as nodered_29d65fe2c2dc62c5 (p2, c1, k60).
+1700057560: mosquitto version 2.0.18 terminating
+1700057560: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1700057566: mosquitto version 2.0.18 starting
+1700057566: Config loaded from /mosquitto/config/mosquitto.conf.
+1700057566: Opening ipv4 listen socket on port 1883.
+1700057566: mosquitto version 2.0.18 running
+1700057576: New connection from 172.100.10.15:40930 on port 1883.
+1700057576: New client connected from 172.100.10.15:40930 as nodered_63bb4877c3f885ad (p2, c1, k60).

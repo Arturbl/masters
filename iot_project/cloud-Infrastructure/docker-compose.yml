@@ -35,10 +35,10 @@ services:
           idc-net:
               ipv4_address: 172.100.10.10
 
-  mysql-db:
+  postgres-db:
     build:
       dockerfile: Dockerfile
-      context: data/mysql-data
+      context: data/postgres-data
     container_name: db
     restart: always
     ports:
