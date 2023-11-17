@@ -6,7 +6,7 @@ class SubPub:
     def __init__(self, client):
         self.client = client
 
-    def on_connect(self, userdata, flags, return_code):
+    def on_connect(self, client, userdata, flags, return_code):
         if return_code == 0:
             print("connected")
             return

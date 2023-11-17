@@ -29,5 +29,6 @@ def main():
 
     subPub.send_message("idc/fitness", messages)
 
+
 if __name__ == '__main__':
     main()
