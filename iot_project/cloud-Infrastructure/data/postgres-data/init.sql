@@ -1,12 +1,12 @@
 CREATE TABLE Movement (
-    id int primary key not null,
-    date date,
-    time time,
-    activity int,
-    acceleration_x float,
-    acceleration_y float,
-    acceleration_z float,
-    gyro_x float,
-    gyro_y float,
-    gyro_z float
+    id SERIAL PRIMARY KEY,
+    date DATE,
+    time TIME,
+    activity INT,
+    acceleration_x FLOAT,
+    acceleration_y FLOAT,
+    acceleration_z FLOAT,
+    gyro_x FLOAT,
+    gyro_y FLOAT,
+    gyro_z FLOAT
 );

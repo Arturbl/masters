@@ -3,8 +3,6 @@ import json
 
 class PayloadDto:
 
-    MODEL = "training-DT"
-
     def __init__(self):
         self.acceleration_x = None
         self.acceleration_y = None
@@ -15,7 +13,6 @@ class PayloadDto:
 
     def format(self):
         return (
-            f'{{"model":"{self.MODEL}",'
             f'"acceleration_x":{self.acceleration_x},'
             f'"acceleration_y":{self.acceleration_y},'
             f'"acceleration_z":{self.acceleration_z},'

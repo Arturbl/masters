@@ -1,5 +1,8 @@
 import time
-import src.model.payloaddto as  payloaddto
+import src.model.payloaddto as payloaddto
+import src.service.sub.db_handler_service as db_handler_service
+import src.service.sub.processor as processor
+
 
 class SubService:
     BROKER_HOSTNAME = "localhost"
@@ -9,6 +12,8 @@ class SubService:
         self.client = client
         self.thread_listener = True
         self.payload_dto = payloaddto.PayloadDto()
+        self.db_handler_service = db_handler_service.DatabaseHandlerService()
+        self.processor = processor.Processor()
 
     def on_connect(self, client, userdata, flags, return_code):
         if return_code == 0:
@@ -19,7 +24,9 @@ class SubService:
 
     def on_message(self, client, userdata, body):
         self.payload_dto.parse(body.payload.decode("utf-8"))
-        print(self.payload_dto.acceleration_x)
+        print("Received message: " + str(self.payload_dto))
+        prediction = self.processor.process(self.payload_dto)
+        self.db_handler_service.save(self.payload_dto, prediction)
 
     def setup_mqtt_client(self):
         self.client.on_connect = self.on_connect
