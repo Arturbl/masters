@@ -1,6 +1,6 @@
 import threading
 import paho.mqtt.client as mqtt
-from service.sub_service import SubService
+from service.sub.sub_service import SubService
 import time
 
 

@@ -14,7 +14,6 @@ class SubService:
 
     def on_connect(self, client, userdata, flags, return_code):
         if return_code == 0:
-            print("MQTT Subscriber listening on port %d" % self.port)
             self.client.subscribe("idc/fitness")
             return
         print("Could not connect, return code: ", return_code)
