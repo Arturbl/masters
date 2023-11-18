@@ -11,6 +11,7 @@ import json
 
 from modules.functions import get_model_response
 
+    
 
 app = Flask(__name__)
 
@@ -21,7 +22,7 @@ def health():
     return 'ok'
 
 
-@app.route('/predict', methods=['x'])
+@app.route('/predict', methods=['POST'])
 def predict():
     feature_dict = request.get_json()
     if not feature_dict:
@@ -36,7 +37,8 @@ def predict():
         data.append(feature_dict[1])
         response = get_model_response(data, model)
     except ValueError as e:
-        return {'error': str(e).split('\n')[-1].strip()}, 500
+        return {'error': str(e).split('\n')[-1].strip(),
+                'message': str(e)}, 500
 
     return response, 200
 
