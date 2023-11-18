@@ -1,34 +1,34 @@
 import paho.mqtt.client as mqtt
-from service.subPub import SubPub
+import time
+from service.pub_service import SubPub
+from service.csv_handler_service import CsvHandlerService
 
 
-BROKER_HOSTNAME = "localhost"
-PORT = 1883
-client = mqtt.Client("Client1")
-subPub = SubPub(client)
+class MqttPublisher:
+    BROKER_HOSTNAME = "localhost"
+    PORT = 1883
 
+    def __init__(self):
+        self.client = mqtt.Client("Client1")
+        self.sub_pub = SubPub(self.client)
+        self.csv_handler_service = CsvHandlerService()
 
-def build_messages():
-    return [
-        '[{"model":"training-DT"},'
-        '{"acceleration_x":0.2650,'
-        '"acceleration_y":-0.7814,'
-        '"acceleration_z":-0.0076,"'
-        'gyro_x":-0.0590,'
-        '"gyro_y":0.0325,'
-        '"gyro_z":-2.9296}]'
-    ]
+    def build_client(self):
+        self.client.on_connect = self.sub_pub.on_connect
+        self.client.connect(self.BROKER_HOSTNAME, self.PORT)
+        self.client.loop_start()
 
+    def build_messages(self):
+        while True:
+            payload = self.csv_handler_service.generate_payload_instance()
+            self.sub_pub.send_message("idc/fitness", payload)
+            time.sleep(5)
 
-def main():
-    client.on_connect = subPub.on_connect
-    client.connect(BROKER_HOSTNAME, PORT)
-    client.loop_start()
-
-    messages = build_messages()
-
-    subPub.send_message("idc/fitness", messages)
+    def run(self):
+        self.build_client()
+        self.build_messages()
 
 
 if __name__ == '__main__':
-    main()
+    mqtt_publisher = MqttPublisher()
+    mqtt_publisher.run()

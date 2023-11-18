@@ -3,3 +3,6 @@
 
 #intellij auto generated files
 .idea
+
+#python auto generated files
+*.pyc
