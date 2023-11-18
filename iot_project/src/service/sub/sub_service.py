@@ -1,30 +1,30 @@
 import time
-
-global THREAD_LISTENER
-global CLIENT
-
+import src.model.payloaddto as  payloaddto
 
 class SubService:
+    BROKER_HOSTNAME = "localhost"
+    PORT = 1883
 
     def __init__(self, client):
         self.client = client
         self.thread_listener = True
-        self.broker_hostname = "localhost"
-        self.port = 1883
+        self.payload_dto = payloaddto.PayloadDto()
 
     def on_connect(self, client, userdata, flags, return_code):
         if return_code == 0:
+            print("Subscriber listening on port %d" % self.PORT)
             self.client.subscribe("idc/fitness")
             return
         print("Could not connect, return code: ", return_code)
 
-    def on_message(self, client, userdata, message):
-        print("Received message: ", str(message.payload.decode("utf-8")))
+    def on_message(self, client, userdata, body):
+        self.payload_dto.parse(body.payload.decode("utf-8"))
+        print(self.payload_dto.acceleration_x)
 
     def setup_mqtt_client(self):
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
-        self.client.connect(self.broker_hostname, self.port)
+        self.client.connect(self.BROKER_HOSTNAME, self.PORT)
         self.client.loop_start()
 
     def cleanup_and_exit(self):
