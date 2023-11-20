@@ -1,5 +1,4 @@
 import gzip
-
 import joblib
 import pandas as pd
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis

@@ -7,6 +7,14 @@
         "info": ""
     },
     {
+        "id": "288b7a56ef9cfc13",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "037aecdc6926ce9a",
         "type": "mqtt-broker",
         "name": "IdC",
@@ -61,6 +69,205 @@
         "willPayload": ""
     },
     {
+        "id": "2c6175ea3230f846",
+        "type": "ui_tab",
+        "name": "Tab 1",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": true
+    },
+    {
+        "id": "6ac3088cf1415b99",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#c31313",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#c31313",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#c31313",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#ec3737",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#c31313",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "af33e5fa7c753ea3",
+        "type": "ui_group",
+        "name": "Dados Pessoais",
+        "tab": "bfcb0323db82d2ea",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9c4d7e3f60bf724d",
+        "type": "ui_group",
+        "name": "Date and Time",
+        "tab": "7f8d7926e3c987c8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8f771ee3a85b03d8",
+        "type": "ui_group",
+        "name": "Calories",
+        "tab": "7f8d7926e3c987c8",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "566eeaed8c36ac8e",
+        "type": "ui_group",
+        "name": "Log in",
+        "tab": "2c6175ea3230f846",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "bfcb0323db82d2ea",
+        "type": "ui_tab",
+        "name": "Tab 2",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": true
+    },
+    {
+        "id": "7f8d7926e3c987c8",
+        "type": "ui_tab",
+        "name": "Tab 3",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": true
+    },
+    {
+        "id": "448c46098b4326e3",
+        "type": "ui_group",
+        "name": "Activity",
+        "tab": "7f8d7926e3c987c8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f7e2aae850b2b8ed",
+        "type": "ui_link",
+        "name": "Link 5",
+        "icon": "open_in_browser",
+        "target": "newtab",
+        "order": 5
+    },
+    {
+        "id": "ae585875242338b5",
+        "type": "ui_group",
+        "name": "Log out",
+        "tab": "7f8d7926e3c987c8",
+        "order": 4,
+        "disp": true,
+        "width": "2",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "3cc11d24.ff01a2",
         "type": "comment",
         "z": "f6f2187d.f17ca8",
@@ -79,11 +286,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 640,
-        "y": 460,
+        "x": 660,
+        "y": 540,
         "wires": []
     },
     {
@@ -169,10 +377,11 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 640,
+        "x": 680,
         "y": 220,
         "wires": []
     },
@@ -192,7 +401,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 400,
+        "x": 420,
         "y": 220,
         "wires": [
             [
@@ -201,17 +410,13 @@
         ]
     },
     {
-        "id": "bd0817e58c32174a",
+        "id": "fa76cd47cd404c07",
         "type": "inject",
         "z": "f6f2187d.f17ca8",
-        "name": "Iris-KNN",
+        "name": "training-DT",
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
         "repeat": "",
@@ -219,65 +424,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "[{\"model\":\"iris-KNN\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 140,
-        "y": 580,
-        "wires": [
-            [
-                "b5f343a20278eea1"
-            ]
-        ]
-    },
-    {
-        "id": "15dc23581e715dea",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-GNB",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-GNB\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 140,
-        "y": 520,
-        "wires": [
-            [
-                "b5f343a20278eea1"
-            ]
-        ]
-    },
-    {
-        "id": "1b4c1fc9240a787b",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-SVC",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-SVC\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
+        "payload": "[{\"model\":\"training-DT\"},{\"acceleration_x\":0.265,\"acceleration_y\":-0.7814,\"acceleration_z\":-0.0076,\"gyro_x\":-0.059,\"gyro_y\":0.0325,\"gyro_z\":-2.9296}]",
         "payloadType": "json",
         "x": 140,
         "y": 460,
@@ -288,39 +435,116 @@
         ]
     },
     {
-        "id": "5d7fa6dbca76c986",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-DT",
-        "props": [
+        "id": "bb3ecf8dc371017d",
+        "type": "ui_form",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "label": "",
+        "group": "af33e5fa7c753ea3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
             {
-                "p": "payload"
+                "label": "Idade",
+                "value": "Age",
+                "type": "number",
+                "required": true,
+                "rows": null
             },
             {
-                "p": "topic",
-                "vt": "str"
+                "label": "Altura",
+                "value": "Height",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Peso",
+                "value": "Weight",
+                "type": "number",
+                "required": true,
+                "rows": null
             }
         ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-DT\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
+        "formValue": {
+            "Age": "",
+            "Height": "",
+            "Weight": ""
+        },
+        "payload": "",
+        "submit": "Enviar dados",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
         "x": 150,
+        "y": 620,
+        "wires": [
+            [
+                "5cb361c7d3701b1d",
+                "1c79117d38f33bb3"
+            ]
+        ]
+    },
+    {
+        "id": "5cb361c7d3701b1d",
+        "type": "debug",
+        "z": "288b7a56ef9cfc13",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "4f1f8e5acfdbd4c9",
+        "type": "simpletime",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "mydate": true,
+        "myymd": false,
+        "myyear": false,
+        "mymonth": false,
+        "mymonthn": false,
+        "mydom": false,
+        "mydoy": false,
+        "myday": false,
+        "myhourpm": false,
+        "myhour": false,
+        "mytime": false,
+        "mytimes": true,
+        "myminute": false,
+        "myminutes": false,
+        "mysecond": false,
+        "mymillis": false,
+        "myepoch": false,
+        "myrawdate": false,
+        "mypm": false,
+        "x": 410,
         "y": 400,
         "wires": [
             [
-                "b5f343a20278eea1"
+                "7f920edcdbe69c81",
+                "29059e717f8e9b34",
+                "e005d1565b818aea",
+                "1b150b62cf19c9e5"
             ]
         ]
     },
     {
-        "id": "fa76cd47cd404c07",
+        "id": "5ca964fc27c8df50",
         "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-LDA",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
         "props": [
             {
                 "p": "payload"
@@ -330,48 +554,480 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "1",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "[{\"model\":\"iris-LDA\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 140,
-        "y": 280,
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 400,
         "wires": [
             [
-                "b5f343a20278eea1"
+                "4f1f8e5acfdbd4c9"
             ]
         ]
     },
     {
-        "id": "e2c8d2430fd78714",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Iris-LR",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"model\":\"iris-LR\"},{\"SepalLengthCm\":5.9,\"SepalWidthCm\":3,\"PetalLengthCm\":5.1,\"PetalWidthCm\":1}]",
-        "payloadType": "json",
-        "x": 150,
+        "id": "7f920edcdbe69c81",
+        "type": "debug",
+        "z": "288b7a56ef9cfc13",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "mydate",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "29059e717f8e9b34",
+        "type": "debug",
+        "z": "288b7a56ef9cfc13",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "mytimes",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
         "y": 340,
+        "wires": []
+    },
+    {
+        "id": "e005d1565b818aea",
+        "type": "ui_text",
+        "z": "288b7a56ef9cfc13",
+        "group": "9c4d7e3f60bf724d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Date",
+        "format": "{{msg.mydate}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 610,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "1b150b62cf19c9e5",
+        "type": "ui_text",
+        "z": "288b7a56ef9cfc13",
+        "group": "9c4d7e3f60bf724d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Time",
+        "format": "{{msg.mytimes}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 610,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "293dbf75642fcbfd",
+        "type": "ui_chart",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "group": "448c46098b4326e3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Activity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#f2f2f2",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 600,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5df3d5b1c4e0ab4b",
+        "type": "inject",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 100,
         "wires": [
             [
-                "b5f343a20278eea1"
+                "39391598e5ea7083"
             ]
+        ]
+    },
+    {
+        "id": "39391598e5ea7083",
+        "type": "function",
+        "z": "288b7a56ef9cfc13",
+        "name": "function 1",
+        "func": "msg.payload = Math.round(Math.random());\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 100,
+        "wires": [
+            [
+                "293dbf75642fcbfd"
+            ]
+        ]
+    },
+    {
+        "id": "c9ddf1ea6bb8b870",
+        "type": "ui_chart",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "group": "8f771ee3a85b03d8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Calories",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "500",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#f2f2f2",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 600,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "06529158289a1005",
+        "type": "inject",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "48b4504505fd7e96"
+            ]
+        ]
+    },
+    {
+        "id": "48b4504505fd7e96",
+        "type": "function",
+        "z": "288b7a56ef9cfc13",
+        "name": "function 2",
+        "func": "msg.payload = Math.floor(Math.random() * 501);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 180,
+        "wires": [
+            [
+                "c9ddf1ea6bb8b870"
+            ]
+        ]
+    },
+    {
+        "id": "1c79117d38f33bb3",
+        "type": "change",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"tab\":\"Tab 3\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 720,
+        "wires": [
+            [
+                "62c3a8c73a088819"
+            ]
+        ]
+    },
+    {
+        "id": "62c3a8c73a088819",
+        "type": "ui_ui_control",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "events": "all",
+        "x": 700,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ff55108a85923c6d",
+        "type": "change",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"tab\":\"Tab 1\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 880,
+        "wires": [
+            [
+                "89c3f95ca8f566ba"
+            ]
+        ]
+    },
+    {
+        "id": "89c3f95ca8f566ba",
+        "type": "ui_ui_control",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "events": "all",
+        "x": 600,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9483f2ed40163d1",
+        "type": "ui_button",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "group": "ae585875242338b5",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Log out",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 140,
+        "y": 880,
+        "wires": [
+            [
+                "ff55108a85923c6d"
+            ]
+        ]
+    },
+    {
+        "id": "846adac073643db4",
+        "type": "ui_form",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "label": "Login",
+        "group": "566eeaed8c36ac8e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Username",
+                "value": "Username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "Password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "Username": "",
+            "Password": ""
+        },
+        "payload": "",
+        "submit": "Login",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": false,
+        "className": "",
+        "x": 130,
+        "y": 1000,
+        "wires": [
+            [
+                "8a13240aceda6f5c",
+                "57965fbaa91f949a"
+            ]
+        ]
+    },
+    {
+        "id": "8a13240aceda6f5c",
+        "type": "debug",
+        "z": "288b7a56ef9cfc13",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "57965fbaa91f949a",
+        "type": "change",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"tab\":\"Tab 2\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 1120,
+        "wires": [
+            [
+                "012ef9ddc92a1466"
+            ]
+        ]
+    },
+    {
+        "id": "012ef9ddc92a1466",
+        "type": "ui_ui_control",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "events": "all",
+        "x": 540,
+        "y": 1120,
+        "wires": [
+            []
         ]
     }
 ]

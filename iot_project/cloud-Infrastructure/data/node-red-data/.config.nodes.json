@@ -816,5 +816,24 @@
                 "file": "/data/node_modules/node-red-contrib-machine-learning-v2/nodes/trainers/one-class-support-vector-classifier/one-class-support-vector-classifier.js"
             }
         }
+    },
+    "node-red-contrib-simpletime": {
+        "name": "node-red-contrib-simpletime",
+        "version": "2.10.4",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "simpletime": {
+                "name": "simpletime",
+                "types": [
+                    "simpletime"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-simpletime",
+                "file": "/data/node_modules/node-red-contrib-simpletime/simpletime.js"
+            }
+        }
     }
 }
