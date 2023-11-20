@@ -1,0 +1,8 @@
+#node red files
+*.log
+
+#intellij auto generated files
+.idea
+
+#python auto generated files
+*.pyc

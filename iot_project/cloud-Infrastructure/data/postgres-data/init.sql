@@ -10,3 +10,11 @@ CREATE TABLE Movement (
     gyro_y FLOAT,
     gyro_z FLOAT
 );
+
+CREATE TABLE Users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255),
+    age INT,
+    height INT,
+    weight INT
+);

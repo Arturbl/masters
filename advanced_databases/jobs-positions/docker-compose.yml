@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+
+  mysql-db:
+    build:
+      dockerfile: Dockerfile
+      context: data/mysql-data
+    container_name: mysql-db
+    environment:
+      MYSQL_USER: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    networks:
+      idc-net:
+        ipv4_address: 172.100.11.18
+
+  mongo-db:
+    build:
+      dockerfile: Dockerfile
+      context: data/mongo-data
+    container_name: mongo-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+      MONGO_INITDB_DATABASE: admin
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      idc-net:
+        ipv4_address: 172.100.11.19
+
+networks:
+  idc-net:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 172.100.11.0/24
