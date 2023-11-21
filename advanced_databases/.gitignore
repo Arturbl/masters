@@ -6,3 +6,8 @@
 
 #python auto generated files
 *.pyc
+
+#node auto generated files
+node_modules/*
+package-lock.json
+package.json

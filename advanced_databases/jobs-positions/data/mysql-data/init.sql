@@ -42,7 +42,7 @@ CREATE TABLE job_positions (
    compensation_type longtext,
    scraped long,
    PRIMARY KEY (job_id),
-   FOREIGN KEY (company_id) REFERENCES Companies (company_id)
+   FOREIGN KEY (company_id) REFERENCES companies (company_id)
 );
 
 CREATE TABLE employee_counts (
@@ -50,14 +50,14 @@ CREATE TABLE employee_counts (
      employee_count int,
      follower_count int,
      time_record float,
-     FOREIGN KEY (company_id) REFERENCES Companies (company_id)
+     FOREIGN KEY (company_id) REFERENCES companies (company_id)
 );
 
 CREATE TABLE benefits (
       job_id int,
       inferred int,
       type varchar(255),
-      FOREIGN KEY (job_id) REFERENCES Job_positions (job_id)
+      FOREIGN KEY (job_id) REFERENCES job_positions (job_id)
 );
 
 CREATE TABLE salaries (
@@ -70,5 +70,5 @@ CREATE TABLE salaries (
   currency varchar(255),
   compensation_type varchar(255),
   PRIMARY KEY (salary_id),
-  FOREIGN KEY (job_id) REFERENCES Job_positions (job_id)
+  FOREIGN KEY (job_id) REFERENCES job_positions (job_id)
 );
