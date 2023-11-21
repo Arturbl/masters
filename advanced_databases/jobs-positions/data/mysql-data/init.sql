@@ -1,5 +1,5 @@
 CREATE TABLE companies (
-   company_id int,
+   company_id bigint,
    name longtext,
    description longtext,
    company_size int,
@@ -12,9 +12,9 @@ CREATE TABLE companies (
    PRIMARY KEY (company_id)
 );
 
-CREATE TABLE job_positions (
-   job_id int,
-   company_id int,
+CREATE TABLE job_postings (
+   job_id bigint,
+   company_id bigint,
    title longtext,
    description longtext,
    max_salary float,
@@ -30,11 +30,11 @@ CREATE TABLE job_positions (
    job_posting_url longtext,
    application_url longtext,
    application_type longtext,
-   expiry Date,
-   closed_time Date,
+   expiry bigint, -- this is a date
+   closed_time bigint, -- this is a date
    formatted_experience_level longtext,
    skills_desc longtext,
-   listed_time Date,
+   listed_time bigint, -- this is a date
    posting_domain longtext,
    sponsored int,
    work_type longtext,
@@ -46,7 +46,7 @@ CREATE TABLE job_positions (
 );
 
 CREATE TABLE employee_counts (
-     company_id int ,
+     company_id bigint ,
      employee_count int,
      follower_count int,
      time_record float,
@@ -54,15 +54,15 @@ CREATE TABLE employee_counts (
 );
 
 CREATE TABLE benefits (
-      job_id int,
+      job_id bigint,
       inferred int,
       type varchar(255),
-      FOREIGN KEY (job_id) REFERENCES job_positions (job_id)
+      FOREIGN KEY (job_id) REFERENCES job_postings (job_id)
 );
 
 CREATE TABLE salaries (
-  salary_id int,
-  job_id int,
+  salary_id bigint,
+  job_id bigint,
   max_salary float,
   med_salary float,
   min_salary float,
@@ -70,5 +70,5 @@ CREATE TABLE salaries (
   currency varchar(255),
   compensation_type varchar(255),
   PRIMARY KEY (salary_id),
-  FOREIGN KEY (job_id) REFERENCES job_positions (job_id)
+  FOREIGN KEY (job_id) REFERENCES job_postings (job_id)
 );

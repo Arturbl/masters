@@ -16,6 +16,3 @@ def init():
         data_json = data.to_dict(orient='records')
         collection.insert_many(data_json)
         print(f'Collection created: {f}')
-
-
-init()
