@@ -1,14 +1,23 @@
-#node red files
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# Node-RED
 *.log
 
-#intellij auto generated files
-.idea
 
 #python auto generated files
 *.pyc
-out/
+out/*
 
-#node auto generated files
+# Visual Studio Code
+.vscode/
+
+# Node.js
 node_modules/
 package-lock.json
 package.json
+
+
+# do not save csv files, they are too large
+**/src/utils/*.csv
