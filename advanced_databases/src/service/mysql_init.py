@@ -28,10 +28,10 @@ def run_row_by_row():
         if not success:
             rows_to_delete.append(index)
         index += 1
-    if rows_to_delete:
-        print(f'Deleting rows from {f}.csv:', rows_to_delete)
-        data = data.drop(index=rows_to_delete)
-        data.to_csv(file_path, index=False, encoding='utf-8')
+    # if rows_to_delete:
+    #     print(f'Deleting rows from {f}.csv:', rows_to_delete)
+    #     data = data.drop(index=rows_to_delete)
+    #     data.to_csv(file_path, index=False, encoding='utf-8')
 
 
 for f in files:
