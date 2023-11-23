@@ -17,7 +17,3 @@ out/*
 node_modules/
 package-lock.json
 package.json
-
-
-# do not save csv files, they are too large
-**/src/utils/*.csv

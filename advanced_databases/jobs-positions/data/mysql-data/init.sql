@@ -16,7 +16,6 @@ CREATE TABLE job_postings (
    job_id bigint,
    company_id bigint,
    title longtext,
-   description longtext,
    max_salary float,
    med_salary float,
    min_salary float,
