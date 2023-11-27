@@ -14,7 +14,7 @@ db.job_postings.aggregate([
         }
     },
     {
-        $match: { "title": /er/i }
+        $match: { "title": /er$/ }
     },
     {
         $count: "total"
@@ -49,9 +49,9 @@ db.salaries.aggregate([
 // 3c
 db.benefits.updateMany(
     { type: 'Medical insurance' },
-    { $set: { type: 'test' } },
-    { multi: true }
+    { $set: { type: 'test' } }
 )
+
 
 // 3d
 db.companies.insertOne({
