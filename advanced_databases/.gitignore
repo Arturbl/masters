@@ -9,6 +9,7 @@
 #python auto generated files
 *.pyc
 out/*
+out
 
 # Visual Studio Code
 .vscode/

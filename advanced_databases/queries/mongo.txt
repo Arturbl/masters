@@ -1,0 +1,68 @@
+
+// 3a
+db.salaries.find({}, { salary_id: 1, max_salary: 1 })
+db.job_postings.find({}, { company_id: 1, location: 1 })
+
+// 3b
+db.job_postings.aggregate([
+    {
+        $lookup: {
+            from: "companies",
+            localField: "company_id",
+            foreignField: "company_id",
+            as: "company"
+        }
+    },
+    {
+        $match: { "title": /er/i }
+    },
+    {
+        $count: "total"
+    }
+])
+
+db.salaries.aggregate([
+    {
+        $lookup: {
+            from: "job_postings",
+            localField: "job_id",
+            foreignField: "job_id",
+            as: "job_posting"
+        }
+    },
+    {
+        $unwind: "$job_posting"
+    },
+    {
+        $match: { "job_posting.max_salary": { $gt: 5000 } }
+    },
+    {
+        $group: {
+            _id: null,
+            avg_max_salary: { $avg: "$max_salary" },
+            min_max_salary: { $min: "$max_salary" },
+            max_max_salary: { $max: "$max_salary" }
+        }
+    }
+])
+
+// 3c
+db.benefits.updateMany(
+    { type: 'Medical insurance' },
+    { $set: { type: 'test' } },
+    { multi: true }
+)
+
+// 3d
+db.companies.insertOne({
+    company_id: 1,
+    name: 'Empresas Empresas',
+    description: 'Fazemos tudo e mais alguma coisa',
+    company_size: 15,
+    state: 'CA',
+    country: 'USA',
+    city: 'Los Angeles',
+    zip_code: '2625-136',
+    address: 'Rua 29 de Fevereiro',
+    url: 'https://www.example.com'
+})
