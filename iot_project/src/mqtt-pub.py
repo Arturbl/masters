@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 import time
-from service.pub.pub_service import SubPub
+from service.pub.pub_service import PubService
 from service.pub.csv_handler_service import CsvHandlerService
 
 
@@ -10,7 +10,7 @@ class MqttPublisher:
 
     def __init__(self):
         self.client = mqtt.Client("Client1")
-        self.sub_pub = SubPub(self.client)
+        self.sub_pub = PubService(self.client)
         self.csv_handler_service = CsvHandlerService()
 
     def build_client(self):

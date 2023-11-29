@@ -1,17 +1,9 @@
-# Local imports
-import datetime
 
-# Third part imports
+import joblib
 from flask import Flask
 from flask import request
-import pandas as pd
-import joblib
-import gzip
-import json
 
 from modules.functions import get_model_response
-
-    
 
 app = Flask(__name__)
 

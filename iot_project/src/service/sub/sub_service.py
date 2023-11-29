@@ -1,7 +1,7 @@
 import time
 import src.model.payloaddto as payloaddto
-import src.service.sub.db_handler_service as db_handler_service
-import src.service.sub.processor as processor
+import service.database.db_handler_service as db_handler_service
+import service.processor.processor as processor
 
 
 class SubService:

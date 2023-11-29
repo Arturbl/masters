@@ -19,20 +19,15 @@ class DatabaseHandlerService:
         self.cursor.execute(insert_query, values)
         self.connection.commit()
 
-    def build_movement_params(self, payload, activity):
-        current_date = datetime.now().strftime('%Y-%m-%d')
-        current_time = datetime.now().strftime('%H:%M:%S')
-        return (
-            current_date,
-            current_time,
-            activity,
-            payload.acceleration_x,
-            payload.acceleration_y,
-            payload.acceleration_z,
-            payload.gyro_x,
-            payload.gyro_y,
-            payload.gyro_z
-        )
+    def validate_user_password(self, username, password):
+        select_query = '''
+                SELECT id FROM users
+                WHERE username = %s AND password = %s
+        '''
+        values = (username, password)
+        self.cursor.execute(select_query, values)
+        result = self.cursor.fetchone()
+        return result is not None
 
     def open_connection(self):
         db_params = {

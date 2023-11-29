@@ -1,7 +1,7 @@
 import time
 
 
-class SubPub:
+class PubService:
 
     def __init__(self, client):
         self.client = client
