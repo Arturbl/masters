@@ -7,14 +7,6 @@
         "info": ""
     },
     {
-        "id": "e7b0bba04d7cf097",
-        "type": "tab",
-        "label": "Flow 6",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "288b7a56ef9cfc13",
         "type": "tab",
         "label": "Flow 3",
@@ -189,7 +181,7 @@
         "name": "Dados Pessoais",
         "tab": "bfcb0323db82d2ea",
         "order": 2,
-        "disp": true,
+        "disp": false,
         "width": "6",
         "collapse": false,
         "className": ""
@@ -200,7 +192,7 @@
         "name": "Date and Time",
         "tab": "7f8d7926e3c987c8",
         "order": 1,
-        "disp": true,
+        "disp": false,
         "width": "6",
         "collapse": false,
         "className": ""
@@ -211,7 +203,7 @@
         "name": "Calories",
         "tab": "7f8d7926e3c987c8",
         "order": 4,
-        "disp": true,
+        "disp": false,
         "width": "6",
         "collapse": false,
         "className": ""
@@ -222,7 +214,7 @@
         "name": "Log in",
         "tab": "2c6175ea3230f846",
         "order": 3,
-        "disp": true,
+        "disp": false,
         "width": "6",
         "collapse": false,
         "className": ""
@@ -251,7 +243,7 @@
         "name": "Activity",
         "tab": "7f8d7926e3c987c8",
         "order": 2,
-        "disp": true,
+        "disp": false,
         "width": "6",
         "collapse": false,
         "className": ""
@@ -270,7 +262,7 @@
         "name": "Log out",
         "tab": "7f8d7926e3c987c8",
         "order": 4,
-        "disp": true,
+        "disp": false,
         "width": "2",
         "collapse": false,
         "className": ""
@@ -447,7 +439,7 @@
         "type": "ui_form",
         "z": "288b7a56ef9cfc13",
         "name": "",
-        "label": "",
+        "label": "Dados Pessoais",
         "group": "af33e5fa7c753ea3",
         "order": 1,
         "width": 0,
@@ -487,7 +479,7 @@
         "topicType": "msg",
         "splitLayout": "",
         "className": "",
-        "x": 150,
+        "x": 180,
         "y": 620,
         "wires": [
             [
