@@ -1,2 +1,2 @@
-REM Stop and remove the containers
-docker-compose down
+@echo off
+docker-compose -f docker-compose.yml down --volumes --rmi all

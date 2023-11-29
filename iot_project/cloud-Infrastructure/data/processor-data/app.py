@@ -3,8 +3,8 @@ from json import JSONEncoder
 import requests
 from flask import Flask, jsonify, request
 import threading
-import src.model.payloaddto as payloaddto
-import src.service.database.db_handler_service as dbhandler
+import payloaddto
+import db_handler_service as dbHandler
 
 
 class PayloadDtoEncoder(JSONEncoder):
@@ -21,19 +21,20 @@ class Processor:
         self.app = Flask(__name__)
         self.register_routes()
         threading.Thread(target=self.run_flask_app).start()
-        self.db_handler_service = dbhandler.DatabaseHandlerService()
+        self.db_handler_service = dbHandler.DatabaseHandlerService()
 
     def run_flask_app(self):
-        self.app.run(host='localhost', port=8081)
+        self.app.run(host='0.0.0.0', port=8081)
 
     def register_routes(self):
         self.app.add_url_rule('/login', 'login', self.validate_user, methods=['POST'])
+        self.app.add_url_rule('/health', 'health', self.health, methods=['GET'])
 
     def process(self, payload):
         model_component = {"model": self.MODEL}
         payload_component = payload.__dict__
         json_payload = json.dumps([model_component, payload_component])
-        url = 'http://localhost:8000/predict'
+        url = 'http://172.100.10.14:8000/predict'
         headers = {'Content-Type': 'application/json'}
         response = requests.post(url, data=json_payload, headers=headers)
         if response.status_code == 200:
@@ -46,8 +47,15 @@ class Processor:
         username = data.get('username')
         password = data.get('password')
         result = self.db_handler_service.validate_user_password(username, password)
+        print(result)
         if result is not None:
-            return jsonify(True)
-        else:
-            return jsonify(False)
+            return jsonify(result)
+        return jsonify(False)
 
+    def health(self):
+        result = self.db_handler_service.health()
+        return jsonify(result)
+
+
+if __name__ == '__main__':
+    p = Processor()

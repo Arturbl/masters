@@ -56,13 +56,23 @@ services:
           idc-net:
               ipv4_address: 172.100.10.14
 
-#
-# Add more containers
-#
+  processor:
+    build:
+      dockerfile: Dockerfile
+      context: data/processor-data
+    container_name: processor
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      idc-net:
+        ipv4_address: 172.100.10.19
+    extra_hosts:
+      - "postgres-db:172.100.10.18"
+
 
 networks:
   idc-net:
-      driver: bridge
       ipam:
         driver: default
         config:
