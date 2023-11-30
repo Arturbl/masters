@@ -4,6 +4,8 @@ SELECT salary_id, max_salary FROM salaries;
 
 SELECT company_id, location FROM job_postings;
 
+SELECT count(*) FROM job_postings;
+
 # -------------------------------------- 3b -----------------
 SELECT count(*) FROM job_postings jp
     LEFT JOIN companies c on jp.company_id = c.company_id
@@ -14,7 +16,8 @@ SELECT avg(jp.max_salary), min(jp.max_salary), max(jp.max_salary) FROM salaries 
     WHERE jp.max_salary > 5000;
 
 # -------------------------------------- 3C -----------------
-UPDATE benefits SET type = 'test' WHERE type = 'Medical insurance' LIMIT 10;
+UPDATE benefits SET type
+    = 'test' WHERE type = 'Medical insurance' LIMIT 10;
 
 # -------------------------------------- 3D -----------------
 INSERT INTO companies

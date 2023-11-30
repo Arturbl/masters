@@ -9,37 +9,43 @@ client = mysql.connector.connect(user='admin', password='admin', host='localhost
 mycursor = client.cursor()
 
 
-def insert_row(query, chunk, table, row_index):
+def insert_row(query, chunk, f, row_index, data_frame):
     try:
         data_tuples = [tuple(c) for c in chunk]
         mycursor.executemany(query, data_tuples)
         client.commit()
-        print(f'Inserted smaller chunk: on table {table}. Ids: {data_tuples}')
+        print(f'Inserted smaller chunk: on table {f}. Ids: {data_tuples}')
     except Exception as err:
-        print(f'Error inserting chunk on table {table}, error: {err}')
+        print(f'Error inserting chunk on table {f}, error: {err}')
+        delete_rows_from_csv(f, data_frame, row_index, len(chunk))
         return False
     return True
 
 
-def insert_smaller_chunks(insert_query, f, data_tuples):
+def delete_rows_from_csv(f, data_frame, start_index, num_rows):
+    data_frame.drop(data_frame.index[start_index:start_index + num_rows], inplace=True)
+    data_frame.to_csv(f, index=False, encoding='utf-8')
+
+
+def insert_smaller_chunks(insert_query, f, data_tuples, data_frame):
     chunk_index = 0
     new_chunk = np.array_split(data_tuples, len(data_tuples) / 50)
     for chunk in new_chunk:
-        insert_row(insert_query, chunk, f, chunk_index)
+        insert_row(insert_query, chunk, f, chunk_index, data_frame)
         chunk_index += 1
 
 
 def init():
     for f in files:
         file_path = os.path.join(os.path.dirname(__file__), '../', 'utils', f'{f}.csv')
-        data = pd.read_csv(file_path, encoding='utf-8')
-        data = data.fillna(0)
+        data_frame = pd.read_csv(file_path, encoding='utf-8')
+        data_frame = data_frame.fillna(0)
 
-        id_columns = [col for col in data.columns if col.lower().endswith('pany_id')]
-        data[id_columns] = data[id_columns].astype(int)
-        array_chunks = np.array_split(data.values, len(data.values) / 500)
+        id_columns = [col for col in data_frame.columns if col.lower().endswith('pany_id')]
+        data_frame[id_columns] = data_frame[id_columns].astype(int)
+        array_chunks = np.array_split(data_frame.values, len(data_frame.values) / 500)
 
-        values = ', '.join(['%s'] * len(data.columns))
+        values = ', '.join(['%s'] * len(data_frame.columns))
         insert_query = f"INSERT INTO {f} VALUES ({values})"
 
         for chunk in array_chunks:
@@ -48,7 +54,7 @@ def init():
                 client.commit()
                 print(f'Chunk inserted to {f}. {[tuple(var)[0] for var in chunk]}')
             except:
-                insert_smaller_chunks(insert_query, f, chunk)
+                insert_smaller_chunks(insert_query, file_path, chunk, data_frame)
 
     mycursor.close()
     client.close()
