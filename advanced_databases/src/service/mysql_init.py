@@ -4,6 +4,7 @@ import mysql.connector
 import numpy as np
 import pandas as pd
 
+
 files = ["companies", "job_postings", "employee_counts", "benefits", "salaries"]
 client = mysql.connector.connect(user='admin', password='admin', host='localhost', port=3306, database='mysql')
 mycursor = client.cursor()
