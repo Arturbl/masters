@@ -1,12 +1,9 @@
-FROM postgres:12.5
-ENV LANG en_US.UTF-8
+FROM mysql:latest
+
+MAINTAINER 'Artur Costa'
 
 COPY init.sql /docker-entrypoint-initdb.d/
 
-MAINTAINER Artur Costa
-ENV POSTGRES_USER admin
-ENV POSTGRES_PASSWORD admin
-ENV POSTGRES_DB postgres
-ENV PGDATA /var/lib/postgresql/data/
-ENV TZ=UTC
-EXPOSE 9876
+RUN chown -R mysql:root /var/lib/mysql/
+
+EXPOSE 3306

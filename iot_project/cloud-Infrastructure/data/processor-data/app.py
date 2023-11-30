@@ -1,10 +1,11 @@
 import json
 from json import JSONEncoder
+
 import requests
-from flask import Flask, jsonify, request
-import threading
-import payloaddto
+from flask import Flask, request, Response
+
 import db_handler_service as dbHandler
+import payloaddto
 
 
 class PayloadDtoEncoder(JSONEncoder):
@@ -14,48 +15,43 @@ class PayloadDtoEncoder(JSONEncoder):
         return super().default(o)
 
 
-class Processor:
-    MODEL = "training-DT"
+MODEL = "training-DT"
 
-    def __init__(self):
-        self.app = Flask(__name__)
-        self.register_routes()
-        threading.Thread(target=self.run_flask_app).start()
-        self.db_handler_service = dbHandler.DatabaseHandlerService()
+app = Flask(__name__)
+db_handler_service = dbHandler.DatabaseHandlerService()
 
-    def run_flask_app(self):
-        self.app.run(host='0.0.0.0', port=8081)
 
-    def register_routes(self):
-        self.app.add_url_rule('/login', 'login', self.validate_user, methods=['POST'])
-        self.app.add_url_rule('/health', 'health', self.health, methods=['GET'])
+def process(payload):
+    model_component = {"model": MODEL}
+    payload_component = payload.__dict__
+    json_payload = json.dumps([model_component, payload_component])
+    url = 'http://172.100.10.14:8000/predict'
+    headers = {'Content-Type': 'application/json'}
+    response = requests.post(url, data=json_payload, headers=headers)
+    if response.status_code == 200:
+        result = response.json()
+        return result.get("prediction")
+    return None
 
-    def process(self, payload):
-        model_component = {"model": self.MODEL}
-        payload_component = payload.__dict__
-        json_payload = json.dumps([model_component, payload_component])
-        url = 'http://172.100.10.14:8000/predict'
-        headers = {'Content-Type': 'application/json'}
-        response = requests.post(url, data=json_payload, headers=headers)
-        if response.status_code == 200:
-            result = response.json()
-            return result.get("prediction")
-        return None
 
-    def validate_user(self):
-        data = request.get_json()
-        username = data.get('username')
-        password = data.get('password')
-        result = self.db_handler_service.validate_user_password(username, password)
-        print(result)
-        if result is not None:
-            return jsonify(result)
-        return jsonify(False)
+@app.route('/login', methods=['POST'])
+def validate_user():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+    result = db_handler_service.validate_user_password(username, password)
+    return build_response(result)
 
-    def health(self):
-        result = self.db_handler_service.health()
-        return jsonify(result)
+
+@app.route('/health', methods=['GET'])
+def health():
+    result = db_handler_service.health()
+    return build_response(result)
+
+
+def build_response(response):
+    return Response(json.dumps(response), mimetype='application/json').data
 
 
 if __name__ == '__main__':
-    p = Processor()
+    app.run(host='0.0.0.0', port=8081)

@@ -1,4 +1,4 @@
-CREATE TABLE Movement (
+CREATE TABLE movement (
     id SERIAL PRIMARY KEY,
     date DATE,
     time TIME,
@@ -11,7 +11,7 @@ CREATE TABLE Movement (
     gyro_z FLOAT
 );
 
-CREATE TABLE Users (
+CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255),
     password VARCHAR(255),
@@ -20,7 +20,7 @@ CREATE TABLE Users (
     weight INT
 );
 
-INSERT INTO Users
+INSERT INTO users
     (username, password)
 VALUES
     ('artur', 'artur');
