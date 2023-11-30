@@ -90,13 +90,6 @@ class DatabaseHandlerService:
         while not self.is_db_connected and time.time() - start_time < 10:
             try:
                 self.connection = mysql.connector.connect(**self.connection_params)
-                # self.connection = mysql.connector.connect(
-                #     host="172.100.10.18",
-                #     user="admin",
-                #     password='admin',
-                #     database="mysql",
-                #     port=5677
-                # )
                 self.cursor = self.connection.cursor()
                 self.is_db_connected = True
                 return True
