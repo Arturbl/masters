@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd..
+cd ..
 
 # Stop and remove the containers
 docker-compose down
