@@ -15,9 +15,9 @@ def insert_row(query, chunk, f, row_index, data_frame):
         data_tuples = [tuple(c) for c in chunk]
         mycursor.executemany(query, data_tuples)
         client.commit()
-        print(f'Smaller chunk inserted to: {f}. Ids: {[tuple(c)[0] for c in chunk]}')
+        print(f'{f.upper()} Inserting smaller chunk with ids: {[tuple(c)[0] for c in chunk]}')
     except Exception as err:
-        print(f'Error inserting chunk {f}, error: {err}')
+        print(f'{f.upper()} Error inserting chunk: {err}')
         # delete_rows_from_csv(f, data_frame, row_index, len(chunk))
         return False
     return True
@@ -53,7 +53,7 @@ def init():
             try:
                 mycursor.executemany(insert_query, [tuple(c) for c in chunk])
                 client.commit()
-                print(f'Chunk inserted to {f}. {[tuple(var)[0] for var in chunk]}')
+                print(f'{f.upper()} Inserting smaller chunk with ids: {[tuple(var)[0] for var in chunk]}')
             except:
                 insert_smaller_chunks(insert_query, f, chunk, data_frame)
 
