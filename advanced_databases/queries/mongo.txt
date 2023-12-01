@@ -1,25 +1,114 @@
 
 // 3a
-db.salaries.find({}, { salary_id: 1, max_salary: 1 })
-db.job_postings.find({}, { company_id: 1, location: 1 })
-
-// 3b
-db.job_postings.aggregate([
+db.salaries.aggregate([
     {
-        $lookup: {
-            from: "companies",
-            localField: "company_id",
-            foreignField: "company_id",
-            as: "company"
+        $group: {
+            _id: "$salary_id",
+            avg_max_salary: { $avg: "$max_salary" }
         }
     },
     {
-        $match: { "title": /er$/ }
-    },
-    {
-        $count: "total"
+        $sort: {
+            avg_max_salary: -1
+        }
     }
-])
+]);
+
+db.job_postings.aggregate([
+  {
+    $group: {
+      _id: {
+        company_id: "$company_id",
+        location: "$location"
+      },
+      count: { $sum: 1 }
+    }
+  },
+  {
+    $sort: {
+      "_id.location": 1,
+      count: -1
+    }
+  },
+  {
+    $group: {
+      _id: "$_id.location",
+      topCompany: { $first: "$_id.company_id" }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      company_id: "$topCompany",
+      location: "$_id"
+    }
+  }
+]);
+
+// 3b
+db.job_postings.aggregate([
+  {
+    $match: {
+      title: { $regex: /er$/ } // Similar to LIKE '%er%'
+    }
+  },
+  {
+    $lookup: {
+      from: "companies",
+      localField: "company_id",
+      foreignField: "company_id",
+      as: "company"
+    }
+  },
+  {
+    $unwind: "$company"
+  },
+  {
+    $lookup: {
+      from: "benefits",
+      localField: "job_id",
+      foreignField: "job_id",
+      as: "benefits"
+    }
+  },
+  {
+    $lookup: {
+      from: "employee_counts",
+      localField: "company.company_id",
+      foreignField: "company_id",
+      as: "employee_counts"
+    }
+  },
+  {
+    $group: {
+      _id: {
+        company_id: "$company.company_id",
+        company_name: "$company.name",
+        employee_count: { $ifNull: ["$employee_counts.employee_count", 0] }
+      },
+      job_count: { $sum: 1 }
+    }
+  },
+  {
+    $match: {
+      job_count: { $gt: 5 }
+    }
+  },
+  {
+    $sort: {
+      job_count: -1
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      company_id: "$_id.company_id",
+      company_name: "$_id.company_name",
+      employee_count: "$_id.employee_count",
+      job_count: "$job_count"
+    }
+  }
+]);
 
 db.salaries.aggregate([
     {
@@ -51,7 +140,6 @@ db.benefits.updateMany(
     { type: 'Medical insurance' },
     { $set: { type: 'test' } }
 )
-
 
 // 3d
 db.companies.insertOne({
