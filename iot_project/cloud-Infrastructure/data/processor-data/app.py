@@ -21,8 +21,8 @@ app = Flask(__name__)
 db_handler_service = dbHandler.DatabaseHandlerService()
 
 
-@app.route('/process', methods=['POST'])
-def process():
+@app.route('/processor', methods=['POST'])
+def process_data():
     body = request.get_json()
     model_component = {"model": MODEL}
     payload_component = body
@@ -32,8 +32,8 @@ def process():
     response = requests.post(url, data=json_payload, headers=headers)
     if response.status_code == 200:
         result = response.json()
-        return result.get("prediction")
-    return None
+        return result
+    return "Could not process data"
 
 
 @app.route('/login', methods=['POST'])
