@@ -12,17 +12,17 @@ class PayloadDto:
         self.gyro_z = None
 
     def format(self):
-        return (
-            f'"acceleration_x":{self.acceleration_x},'
-            f'"acceleration_y":{self.acceleration_y},'
-            f'"acceleration_z":{self.acceleration_z},'
-            f'"gyro_x":{self.gyro_x},'
-            f'"gyro_y":{self.gyro_y},'
-            f'"gyro_z":{self.gyro_z}}}'
-        )
+        return {
+            "acceleration_x": self.acceleration_x,
+            "acceleration_y": self.acceleration_y,
+            "acceleration_z": self.acceleration_z,
+            "gyro_x": self.gyro_x,
+            "gyro_y": self.gyro_y,
+            "gyro_z": self.gyro_z
+        }
 
     def parse(self, body):
-        data_dict = json.loads(body)
+        data_dict = json.loads(body.replace("'", "\""))
         self.acceleration_x = data_dict.get("acceleration_x", 0)
         self.acceleration_y = data_dict.get("acceleration_y", 0)
         self.acceleration_z = data_dict.get("acceleration_z", 0)

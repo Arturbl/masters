@@ -1,7 +1,5 @@
 import time
 import src.model.payloaddto as payloaddto
-import service.database.db_handler_service as db_handler_service
-import service.processor.processor as processor
 
 
 class SubService:
@@ -12,8 +10,6 @@ class SubService:
         self.client = client
         self.thread_listener = True
         self.payload_dto = payloaddto.PayloadDto()
-        self.db_handler_service = db_handler_service.DatabaseHandlerService()
-        self.processor = processor.Processor()
 
     def on_connect(self, client, userdata, flags, return_code):
         if return_code == 0:

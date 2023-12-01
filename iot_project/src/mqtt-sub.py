@@ -1,6 +1,6 @@
 import threading
 import paho.mqtt.client as mqtt
-from service.sub.sub_service import SubService
+import service.sub.sub_service as sub_service
 import time
 
 
@@ -8,7 +8,7 @@ class MqttSubscriber:
 
     def __init__(self):
         self.client = mqtt.Client("Client2")
-        self.sub_service = SubService(self.client)
+        self.sub_service = sub_service.SubService(self.client)
         self.mqtt_listener = threading.Thread(target = self.sub_service.mqtt_thread)
 
     def run(self):

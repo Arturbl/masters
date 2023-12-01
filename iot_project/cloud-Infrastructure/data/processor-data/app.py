@@ -21,9 +21,11 @@ app = Flask(__name__)
 db_handler_service = dbHandler.DatabaseHandlerService()
 
 
-def process(payload):
+@app.route('/process', methods=['POST'])
+def process():
+    body = request.get_json()
     model_component = {"model": MODEL}
-    payload_component = payload.__dict__
+    payload_component = body
     json_payload = json.dumps([model_component, payload_component])
     url = 'http://172.100.10.14:8000/predict'
     headers = {'Content-Type': 'application/json'}
@@ -54,4 +56,4 @@ def build_response(response):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8081)
+    app.run(host='0.0.0.0', port=8082)

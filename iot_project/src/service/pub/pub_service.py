@@ -15,7 +15,7 @@ class PubService:
     def send_message(self, topic, payload):
         try:
             time.sleep(1)
-            result = self.client.publish(topic, payload.format())
+            result = self.client.publish(topic, str(payload.format()))
             status = result[0]
             if status == 0:
                 print("Message " + str(payload) + " sent")
