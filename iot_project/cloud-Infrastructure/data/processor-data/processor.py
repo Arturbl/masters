@@ -29,12 +29,11 @@ def process_data():
     json_payload = json.dumps([model_component, payload_component])
     url = 'http://172.100.10.14:8000/predict'
     headers = {'Content-Type': 'application/json'}
-    response = requests.post(url, data=json_payload, headers=headers)
-    if response.status_code == 200:
-        result = response.json()
-        return result
+    with requests.post(url, data=json_payload, headers=headers) as response:
+        if response.status_code == 200:
+            result = response.json()
+            return result
     return "Could not process data"
-
 
 @app.route('/login', methods=['POST'])
 def validate_user():

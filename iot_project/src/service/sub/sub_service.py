@@ -1,6 +1,7 @@
 import time
 import src.model.payloaddto as payloaddto
-
+import requests
+import json
 
 class SubService:
     BROKER_HOSTNAME = "localhost"
@@ -21,8 +22,15 @@ class SubService:
     def on_message(self, client, userdata, body):
         self.payload_dto.parse(body.payload.decode("utf-8"))
         print("Received message: " + str(self.payload_dto))
-        prediction = self.processor.process(self.payload_dto)
-        self.db_handler_service.save(self.payload_dto, prediction)
+        payload_json = json.dumps(self.payload_dto.format())
+        url = 'http://172.100.10.19:8081/process'
+        headers = {'Content-Type': 'application/json'}
+        with requests.post(url, data=payload_json, headers=headers) as response:
+            if response.status_code == 200:
+                result = response.json()
+                return result
+        return "Could not process data"
+
 
     def setup_mqtt_client(self):
         self.client.on_connect = self.on_connect
