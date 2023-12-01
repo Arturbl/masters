@@ -55,7 +55,7 @@ def init():
                 client.commit()
                 print(f'Chunk inserted to {f}. {[tuple(var)[0] for var in chunk]}')
             except:
-                insert_smaller_chunks(insert_query, file_path, chunk, data_frame)
+                insert_smaller_chunks(insert_query, f, chunk, data_frame)
 
     mycursor.close()
     client.close()
