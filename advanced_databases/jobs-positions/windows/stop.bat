@@ -1,4 +1,5 @@
 REM Stop and remove the containers
+cd ..
 docker-compose down
 
 REM Remove the images
