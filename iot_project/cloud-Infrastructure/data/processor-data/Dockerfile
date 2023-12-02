@@ -2,11 +2,11 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY src/processor.py /app
-COPY src/service/db_handler_service.py /app/service/db_handler_service.py
-COPY src/service/csv_handler_service.py /app/service/csv_handler_service.py
-COPY src/utils/trainning.csv /app/utils/trainning.csv
 COPY requirements.txt /app
+COPY src/processor.py /app
+COPY src/db_handler_service.py /app
+COPY src/csv_handler_service.py /app
+COPY src/trainning.csv /app
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
