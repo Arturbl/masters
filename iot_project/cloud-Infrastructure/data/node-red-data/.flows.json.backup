@@ -442,7 +442,7 @@
         "name": "",
         "label": "Dados Pessoais",
         "group": "af33e5fa7c753ea3",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "options": [
@@ -825,8 +825,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 720,
+        "x": 400,
+        "y": 620,
         "wires": [
             [
                 "62c3a8c73a088819"
@@ -839,8 +839,8 @@
         "z": "288b7a56ef9cfc13",
         "name": "",
         "events": "all",
-        "x": 700,
-        "y": 720,
+        "x": 600,
+        "y": 620,
         "wires": [
             []
         ]
@@ -924,7 +924,7 @@
         "height": 0,
         "options": [
             {
-                "label": "Username",
+                "label": "Utilizador",
                 "value": "username",
                 "type": "text",
                 "required": true,
@@ -976,8 +976,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 820,
-        "y": 1060,
+        "x": 940,
+        "y": 920,
         "wires": [
             [
                 "012ef9ddc92a1466"
@@ -990,8 +990,8 @@
         "z": "288b7a56ef9cfc13",
         "name": "",
         "events": "all",
-        "x": 1000,
-        "y": 1060,
+        "x": 1140,
+        "y": 920,
         "wires": [
             []
         ]
@@ -1058,8 +1058,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 650,
-        "y": 1060,
+        "x": 770,
+        "y": 920,
         "wires": [
             [
                 "57965fbaa91f949a"
@@ -1078,8 +1078,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
-        "y": 1180,
+        "x": 600,
+        "y": 1000,
         "wires": [
             [
                 "406b59a60877c83f",
@@ -1102,8 +1102,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 710,
-        "y": 1220,
+        "x": 770,
+        "y": 1060,
         "wires": [
             [
                 "1d81b6607e9289ab"
@@ -1125,8 +1125,8 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 1070,
-        "y": 1220,
+        "x": 1130,
+        "y": 1060,
         "wires": [
             []
         ]
@@ -1150,12 +1150,48 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 880,
-        "y": 1220,
+        "x": 940,
+        "y": 1060,
         "wires": [
             [
                 "6f6d3a0074d6874e"
             ]
+        ]
+    },
+    {
+        "id": "ec960d1a7a658555",
+        "type": "ui_dropdown",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "label": "Género",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "af33e5fa7c753ea3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Masculino",
+                "value": "Masculino",
+                "type": "str"
+            },
+            {
+                "label": "Feminino",
+                "value": "Feminino",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 160,
+        "y": 700,
+        "wires": [
+            []
         ]
     }
 ]
