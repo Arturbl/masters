@@ -4,6 +4,7 @@ import requests
 from flask import Flask, request, Response
 
 import service.db_handler_service as dbHandler
+import service.csv_handler_service as csvHandler
 
 MODEL = "training-DT"
 
@@ -48,3 +49,4 @@ def build_response(response):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8081)
+    csvHandler.main()
