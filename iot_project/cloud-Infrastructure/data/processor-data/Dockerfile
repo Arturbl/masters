@@ -2,9 +2,10 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY service/processor.py /app
-COPY service/db_handler_service.py /app
-COPY service/payloaddto.py /app
+COPY src/processor.py /app
+COPY src/service/db_handler_service.py /app/service/db_handler_service.py
+COPY src/service/csv_handler_service.py /app/service/csv_handler_service.py
+COPY src/utils/trainning.csv /app/utils/trainning.csv
 COPY requirements.txt /app
 
 RUN apt-get update && apt-get install -y \
