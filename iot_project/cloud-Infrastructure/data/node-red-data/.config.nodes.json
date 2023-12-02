@@ -836,23 +836,41 @@
             }
         }
     },
-    "node-red-node-mysql": {
-        "name": "node-red-node-mysql",
-        "version": "1.0.3",
+    "node-red-node-ui-table": {
+        "name": "node-red-node-ui-table",
+        "version": "0.4.3",
         "local": true,
-        "user": false,
+        "user": true,
         "nodes": {
-            "mysql": {
-                "name": "mysql",
+            "ui_table": {
+                "name": "ui_table",
                 "types": [
-                    "MySQLdatabase",
-                    "mysql"
+                    "ui_table"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "node-red-node-mysql",
-                "file": "/data/node_modules/node-red-node-mysql/68-mysql.js"
+                "module": "node-red-node-ui-table",
+                "file": "/data/node_modules/node-red-node-ui-table/node.js"
+            }
+        }
+    },
+    "node-red-contrib-aws-athena-express": {
+        "name": "node-red-contrib-aws-athena-express",
+        "version": "1.0.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "AWS Athena Query": {
+                "name": "AWS Athena Query",
+                "types": [
+                    "AWS Athena Query"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-aws-athena-express",
+                "file": "/data/node_modules/node-red-contrib-aws-athena-express/aws-athena-express.js"
             }
         }
     }
