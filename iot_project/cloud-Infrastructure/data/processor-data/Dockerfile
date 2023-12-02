@@ -2,9 +2,9 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY processor.py /app
-COPY db_handler_service.py /app
-COPY payloaddto.py /app
+COPY service/processor.py /app
+COPY service/db_handler_service.py /app
+COPY service/payloaddto.py /app
 COPY requirements.txt /app
 
 RUN apt-get update && apt-get install -y \

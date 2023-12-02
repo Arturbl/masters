@@ -31,9 +31,11 @@ def process_data():
     headers = {'Content-Type': 'application/json'}
     with requests.post(url, data=json_payload, headers=headers) as response:
         if response.status_code == 200:
-            result = response.json()
-            return result
+            activity_prediction = response.json()['prediction']
+            result = db_handler_service.save(json_payload, activity_prediction)
+            return json_payload if result else "Database not recheable"
     return "Could not process data"
+
 
 @app.route('/login', methods=['POST'])
 def validate_user():

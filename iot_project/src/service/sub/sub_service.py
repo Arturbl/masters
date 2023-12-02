@@ -3,6 +3,7 @@ import src.model.payloaddto as payloaddto
 import requests
 import json
 
+
 class SubService:
     BROKER_HOSTNAME = "localhost"
     PORT = 1883
@@ -23,11 +24,12 @@ class SubService:
         self.payload_dto.parse(body.payload.decode("utf-8"))
         print("Received message: " + str(self.payload_dto))
         payload_json = json.dumps(self.payload_dto.format())
-        url = 'http://172.100.10.19:8081/process'
+        url = 'http://172.100.10.19:8081/processor'
         headers = {'Content-Type': 'application/json'}
         with requests.post(url, data=payload_json, headers=headers) as response:
             if response.status_code == 200:
                 result = response.json()
+                print(f"     [+] processor response: {result}")
                 return result
         return "Could not process data"
 

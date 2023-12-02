@@ -1,5 +1,6 @@
 import mysql.connector
 from datetime import datetime
+import json
 import time
 import logging
 
@@ -19,16 +20,15 @@ class DatabaseHandlerService:
         self.connection = None
         self.cursor = None
 
-    def save(self, payload, activity):
-        print(f"Saving payload {payload} and activity {activity}")
+    def save(self, json_payload, activity):
         if self.validate_connection():
             insert_query = '''
-            INSERT INTO movement 
+            INSERT INTO movement
                 (date, time, activity, acceleration_x, acceleration_y, acceleration_z, gyro_x, gyro_y, gyro_z)
-            VALUES 
+            VALUES
                 (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             '''
-            values = self.build_movement_params(payload, activity)
+            values = self.build_movement_params(json_payload, activity)
             try:
                 self.cursor.execute(insert_query, values)
                 self.connection.commit()
@@ -37,20 +37,22 @@ class DatabaseHandlerService:
                 logging.error(f"Error executing SQL query: {err}")
         return False
 
-    def build_movement_params(self, payload, activity):
+    def build_movement_params(self, json_payload, activity):
         current_date = datetime.now().strftime('%Y-%m-%d')
         current_time = datetime.now().strftime('%H:%M:%S')
+        payload = json.loads(json_payload)[1]
         return (
             current_date,
             current_time,
             activity,
-            payload.acceleration_x,
-            payload.acceleration_y,
-            payload.acceleration_z,
-            payload.gyro_x,
-            payload.gyro_y,
-            payload.gyro_z
+            payload.get("acceleration_x", 0),
+            payload.get("acceleration_y", 0),
+            payload.get("acceleration_z", 0),
+            payload.get("gyro_x", 0),
+            payload.get("gyro_y", 0),
+            payload.get("gyro_z", 0)
         )
+
 
     def validate_user_password(self, username, password):
         error = None
