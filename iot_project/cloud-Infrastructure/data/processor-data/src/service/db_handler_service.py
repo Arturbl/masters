@@ -66,8 +66,8 @@ class DatabaseHandlerService:
                 self.cursor.execute(select_query, values)
                 result = self.cursor.fetchone()
                 if result:
-                    return {"result": True, "username": username}
-                return {"result": False, "username": None}
+                    return True
+                return False
 
             except mysql.connector.Error as err:
                 error = {"error": err}

@@ -1,3 +1,4 @@
 requests
 Flask
 mysql-connector-python
+pandas
