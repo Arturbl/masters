@@ -630,7 +630,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 600,
+        "x": 580,
         "y": 100,
         "wires": [
             []
@@ -719,7 +719,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 600,
+        "x": 580,
         "y": 180,
         "wires": [
             []
@@ -842,7 +842,7 @@
         "z": "288b7a56ef9cfc13",
         "name": "",
         "events": "all",
-        "x": 600,
+        "x": 540,
         "y": 880,
         "wires": [
             []
@@ -1155,7 +1155,25 @@
         "x": 160,
         "y": 680,
         "wires": [
-            []
+            [
+                "b6166ce8f1d5c24f"
+            ]
         ]
+    },
+    {
+        "id": "b6166ce8f1d5c24f",
+        "type": "debug",
+        "z": "288b7a56ef9cfc13",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 680,
+        "wires": []
     }
 ]

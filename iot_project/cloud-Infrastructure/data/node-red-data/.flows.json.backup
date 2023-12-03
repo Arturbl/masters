@@ -516,8 +516,6 @@
         "y": 400,
         "wires": [
             [
-                "7f920edcdbe69c81",
-                "29059e717f8e9b34",
                 "e005d1565b818aea",
                 "1b150b62cf19c9e5"
             ]
@@ -553,40 +551,6 @@
         ]
     },
     {
-        "id": "7f920edcdbe69c81",
-        "type": "debug",
-        "z": "288b7a56ef9cfc13",
-        "name": "debug 7",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "mydate",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "29059e717f8e9b34",
-        "type": "debug",
-        "z": "288b7a56ef9cfc13",
-        "name": "debug 8",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "mytimes",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 340,
-        "wires": []
-    },
-    {
         "id": "e005d1565b818aea",
         "type": "ui_text",
         "z": "288b7a56ef9cfc13",
@@ -603,8 +567,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 610,
-        "y": 460,
+        "x": 590,
+        "y": 360,
         "wires": []
     },
     {
@@ -624,8 +588,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 610,
-        "y": 500,
+        "x": 590,
+        "y": 440,
         "wires": []
     },
     {
@@ -666,7 +630,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 600,
+        "x": 580,
         "y": 100,
         "wires": [
             []
@@ -755,7 +719,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 600,
+        "x": 580,
         "y": 180,
         "wires": [
             []
@@ -878,7 +842,7 @@
         "z": "288b7a56ef9cfc13",
         "name": "",
         "events": "all",
-        "x": 600,
+        "x": 540,
         "y": 880,
         "wires": [
             []
@@ -1039,7 +1003,8 @@
         "y": 1000,
         "wires": [
             [
-                "2b8eb53d43c1ac1d"
+                "2b8eb53d43c1ac1d",
+                "49286ce0821b1e07"
             ]
         ]
     },
@@ -1189,9 +1154,43 @@
         "topicType": "msg",
         "className": "",
         "x": 160,
-        "y": 700,
+        "y": 680,
         "wires": [
-            []
+            [
+                "b6166ce8f1d5c24f"
+            ]
         ]
+    },
+    {
+        "id": "b6166ce8f1d5c24f",
+        "type": "debug",
+        "z": "288b7a56ef9cfc13",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "49286ce0821b1e07",
+        "type": "debug",
+        "z": "288b7a56ef9cfc13",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 1140,
+        "wires": []
     }
 ]
