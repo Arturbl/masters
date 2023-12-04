@@ -854,5 +854,24 @@
                 "file": "/data/node_modules/node-red-node-ui-table/node.js"
             }
         }
+    },
+    "node-red-contrib-aws-athena-express": {
+        "name": "node-red-contrib-aws-athena-express",
+        "version": "1.0.1",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "AWS Athena Query": {
+                "name": "AWS Athena Query",
+                "types": [
+                    "AWS Athena Query"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-aws-athena-express",
+                "file": "/data/node_modules/node-red-contrib-aws-athena-express/aws-athena-express.js"
+            }
+        }
     }
 }

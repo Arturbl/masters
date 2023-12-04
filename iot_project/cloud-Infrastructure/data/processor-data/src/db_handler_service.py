@@ -91,6 +91,29 @@ class DatabaseHandlerService:
                 self.close_connection()
         return error
 
+    def get_history(self, date_begin, date_end):
+        if self.validate_connection():
+            query = '''
+                SELECT *
+                FROM movement
+                WHERE
+                    (
+                        (datetime >= :startDate AND datetime < :endDate) OR
+                        date(datetime) = :startDate
+                    )
+            '''
+            values = (date_begin, date_end)
+            try:
+                self.cursor.execute(query, values)
+                result = self.cursor.fetchall()
+                if result:
+                    return result
+                return None
+            except mysql.connector.Error as err:
+                return None
+            finally:
+                self.close_connection()
+
     def health(self):
         error = None
         if self.validate_connection():

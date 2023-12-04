@@ -1,10 +1,12 @@
 import json
 
 import requests
-from flask import Flask, request, Response
+from flask import Flask, request, Response, jsonify
+from datetime import datetime
 
 import db_handler_service as dbHandler
 import csv_handler_service as csvHandler
+import results_analyser as resultsAnalyser
 
 MODEL = "training-DT"
 
@@ -35,6 +37,29 @@ def validate_user():
     password = data.get('password')
     result = db_handler_service.validate_user_password(username, password)
     return build_response(result)
+
+
+@app.route('/history', methods=['GET'])
+def get_history():
+    dateBegin = request.args.get('dateBegin')
+    dateEnd = request.args.get('dateEnd')
+    if not dateBegin or not dateEnd:
+        return jsonify({'error': 'Missing date parameters'}), 400
+    try:
+        dateBegin = datetime.strptime(dateBegin, '%Y-%m-%d')
+        dateEnd = datetime.strptime(dateEnd, '%Y-%m-%d')
+    except ValueError:
+        return jsonify({'error': 'Invalid date format'}), 400
+    results = db_handler_service.get_history(dateBegin, dateEnd)
+    if results:
+        analysed_results = resultsAnalyser.analyse(results)
+        return {
+            "total": len(results),
+            "result": analysed_results
+        }
+    return {
+        "error": "Could not find results for the given dates"
+    }
 
 
 @app.route('/health', methods=['GET'])
