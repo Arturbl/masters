@@ -16,35 +16,45 @@ def create_path(row, col, maze):
             create_path(next_row, next_col, maze)
 
 
-def visualize_maze(maze, save_path=None):
-    cmap = plt.cm.colors.ListedColormap(['white', 'black', 'green', 'red'])
-    norm = plt.cm.colors.Normalize(vmin=-0.5, vmax=3.5)
-    plt.imshow(maze, cmap=cmap, norm=norm)
+def visualize_maze(maze, start, end, width, save_path=None):
+    fig, ax = plt.subplots(figsize=(10, 10))
+    ax.imshow(maze, cmap=plt.cm.binary)
+
+    ax.plot(start[1], start[0], marker='o', color='green', markersize=width, label='Start')
+    ax.plot(end[1], end[0], marker='o', color='red', markersize=width, label='End')
+
     plt.xticks([])
-    plt.yticks()
+    plt.yticks([])
+    plt.legend()
+
+    print(f"Start Coordinates: {start}")
+    print(f"End Coordinates: {end}")
+    print(f"Width: {width}")
+
     if save_path:
-        plt.savefig(save_path, bbox_inches='tight')
+        plt.savefig(save_path, bbox_inches='tight', pad_inches=0)
         print(f"Maze saved as {save_path}")
         return
     plt.show()
 
 
-def generate_maze(rows, cols):
+def generate_maze(rows, cols, start, end):
     maze = np.ones((2 * rows + 1, 2 * cols + 1), dtype=int)
     create_path(0, 0, maze)
-    maze[0, 0] = 2
-    maze[2 * rows, 2 * cols] = 3
     return maze
 
 
-rows, cols = 4, 4
-maze_matrix = generate_maze(rows, cols)
+rows, cols = 10, 10
+start = (1, 0)
+end = (19, 20)
+width = 20
+maze_matrix = generate_maze(rows, cols, start, end)
 
 print("Generated Maze:")
 print(maze_matrix)
 
 save_folder = 'images'
 os.makedirs(save_folder, exist_ok=True)
-save_path = os.path.join(save_folder, f'maze{time.time()}.png')
+save_path = os.path.join(save_folder, f'maze_{time.time()}.png')
 
-visualize_maze(maze_matrix, save_path)
+visualize_maze(maze_matrix, start, end, width, save_path)
