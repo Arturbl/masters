@@ -14,8 +14,9 @@ def create_path(row, col, maze):
             maze[next_row, next_col] = 0
             create_path(next_row, next_col, maze)
 
-def visualize_maze(maze, start, end, marker_size, save_path=None):
-    fig, ax = plt.subplots(figsize=(8, 8))
+def visualize_maze(maze, start, end, cell_width, marker_size, save_path=None):
+    fig, ax = plt.subplots(figsize=(maze.shape[1] * cell_width / 30, maze.shape[0] * cell_width / 30))
+
     ax.imshow(maze, cmap=plt.cm.binary)
 
     ax.plot(start[1], start[0], marker='o', color='green', markersize=marker_size, label='Start')
@@ -23,11 +24,11 @@ def visualize_maze(maze, start, end, marker_size, save_path=None):
 
     plt.xticks([])
     plt.yticks([])
-    plt.legend()
 
     print(f"Start Coordinates: {start}")
     print(f"End Coordinates: {end}")
     print(f"Marker Size: {marker_size}")
+    print(f"Cell Width: {cell_width}")
 
     if save_path:
         plt.savefig(save_path, bbox_inches='tight', pad_inches=0)
@@ -40,10 +41,10 @@ def generate_maze(rows, cols, start, end, cell_width):
     create_path(0, 0, maze)
     return maze
 
-rows, cols = 5, 5  # Reduced number of rows and columns
-start = (1, 0)
-end = (9, 10)  # Adjusted end point
-cell_width = 2  # Adjust the cell width as needed
+rows, cols = 5, 5
+start = (0, 0)
+end = (2 * rows, 2 * cols)
+cell_width = 10
 maze_matrix = generate_maze(rows, cols, start, end, cell_width)
 
 print("Generated Maze:")
@@ -53,5 +54,4 @@ save_folder = 'images'
 os.makedirs(save_folder, exist_ok=True)
 save_path = os.path.join(save_folder, f'maze.png')
 
-# Reduced marker size
-visualize_maze(maze_matrix, start, end, 5, save_path)
+visualize_maze(maze_matrix, start, end, cell_width, 5, save_path)
