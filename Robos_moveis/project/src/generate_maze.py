@@ -2,9 +2,7 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-import time
 from PIL import Image
-
 
 def create_path(row, col, maze):
     directions = [(0, 2), (2, 0), (0, -2), (-2, 0)]
@@ -17,7 +15,7 @@ def create_path(row, col, maze):
             create_path(next_row, next_col, maze)
 
 def visualize_maze(maze, start, end, marker_size, save_path=None):
-    fig, ax = plt.subplots(figsize=(10, 10))
+    fig, ax = plt.subplots(figsize=(8, 8))
     ax.imshow(maze, cmap=plt.cm.binary)
 
     ax.plot(start[1], start[0], marker='o', color='green', markersize=marker_size, label='Start')
@@ -33,10 +31,6 @@ def visualize_maze(maze, start, end, marker_size, save_path=None):
 
     if save_path:
         plt.savefig(save_path, bbox_inches='tight', pad_inches=0)
-        # Open the saved image and resize it
-        im = Image.open(save_path)
-        im = im.resize((21, 21), Image.ANTIALIAS)  # Adjust the size as needed
-        im.save(save_path)  # Save the resized image
         print(f"Maze saved and resized as {save_path}")
         return
     plt.show()
@@ -46,9 +40,9 @@ def generate_maze(rows, cols, start, end, cell_width):
     create_path(0, 0, maze)
     return maze
 
-rows, cols = 10, 10
+rows, cols = 5, 5  # Reduced number of rows and columns
 start = (1, 0)
-end = (19, 20)
+end = (9, 10)  # Adjusted end point
 cell_width = 2  # Adjust the cell width as needed
 maze_matrix = generate_maze(rows, cols, start, end, cell_width)
 
@@ -57,6 +51,7 @@ print(maze_matrix)
 
 save_folder = 'images'
 os.makedirs(save_folder, exist_ok=True)
-save_path = os.path.join(save_folder, f'maze_{time.time()}.png')
+save_path = os.path.join(save_folder, f'maze.png')
 
-visualize_maze(maze_matrix, start, end, cell_width, save_path)  
+# Reduced marker size
+visualize_maze(maze_matrix, start, end, 5, save_path)
