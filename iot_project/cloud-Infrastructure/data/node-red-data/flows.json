@@ -489,199 +489,6 @@
         ]
     },
     {
-        "id": "4f1f8e5acfdbd4c9",
-        "type": "simpletime",
-        "z": "288b7a56ef9cfc13",
-        "name": "",
-        "mydate": true,
-        "myymd": false,
-        "myyear": false,
-        "mymonth": false,
-        "mymonthn": false,
-        "mydom": false,
-        "mydoy": false,
-        "myday": false,
-        "myhourpm": false,
-        "myhour": false,
-        "mytime": false,
-        "mytimes": true,
-        "myminute": false,
-        "myminutes": false,
-        "mysecond": false,
-        "mymillis": false,
-        "myepoch": false,
-        "myrawdate": false,
-        "mypm": false,
-        "x": 410,
-        "y": 400,
-        "wires": [
-            [
-                "e005d1565b818aea",
-                "1b150b62cf19c9e5"
-            ]
-        ]
-    },
-    {
-        "id": "5ca964fc27c8df50",
-        "type": "inject",
-        "z": "288b7a56ef9cfc13",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 210,
-        "y": 400,
-        "wires": [
-            [
-                "4f1f8e5acfdbd4c9"
-            ]
-        ]
-    },
-    {
-        "id": "e005d1565b818aea",
-        "type": "ui_text",
-        "z": "288b7a56ef9cfc13",
-        "group": "9c4d7e3f60bf724d",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Date",
-        "format": "{{msg.mydate}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 590,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "1b150b62cf19c9e5",
-        "type": "ui_text",
-        "z": "288b7a56ef9cfc13",
-        "group": "9c4d7e3f60bf724d",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Time",
-        "format": "{{msg.mytimes}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 590,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "293dbf75642fcbfd",
-        "type": "ui_chart",
-        "z": "288b7a56ef9cfc13",
-        "name": "",
-        "group": "448c46098b4326e3",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Activity",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "0",
-        "ymax": "1",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#000000",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 580,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5df3d5b1c4e0ab4b",
-        "type": "inject",
-        "z": "288b7a56ef9cfc13",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "5",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 100,
-        "wires": [
-            [
-                "39391598e5ea7083"
-            ]
-        ]
-    },
-    {
-        "id": "39391598e5ea7083",
-        "type": "function",
-        "z": "288b7a56ef9cfc13",
-        "name": "function 1",
-        "func": "msg.payload = Math.round(Math.random());\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 380,
-        "y": 100,
-        "wires": [
-            [
-                "293dbf75642fcbfd"
-            ]
-        ]
-    },
-    {
         "id": "c9ddf1ea6bb8b870",
         "type": "ui_chart",
         "z": "288b7a56ef9cfc13",
@@ -720,7 +527,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 580,
-        "y": 180,
+        "y": 140,
         "wires": [
             []
         ]
@@ -743,7 +550,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 170,
-        "y": 180,
+        "y": 140,
         "wires": [
             [
                 "48b4504505fd7e96"
@@ -763,7 +570,7 @@
         "finalize": "",
         "libs": [],
         "x": 380,
-        "y": 180,
+        "y": 140,
         "wires": [
             [
                 "c9ddf1ea6bb8b870"
@@ -1175,5 +982,167 @@
         "x": 360,
         "y": 680,
         "wires": []
+    },
+    {
+        "id": "ae234380c7532ebc",
+        "type": "ui_form",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "label": "Data",
+        "group": "9c4d7e3f60bf724d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Data",
+                "value": "Data Inicial",
+                "type": "date",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Data",
+                "value": "Data Final",
+                "type": "date",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "Data Inicial": "",
+            "Data Final": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 290,
+        "y": 220,
+        "wires": [
+            [
+                "db9e1f4ac5902e5f"
+            ]
+        ]
+    },
+    {
+        "id": "db9e1f4ac5902e5f",
+        "type": "ui_chart",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "group": "448c46098b4326e3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Activity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#000000",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 660,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "95a7968874c5ada0",
+        "type": "ui_button",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "group": "448c46098b4326e3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Limpar Gráfico",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 500,
+        "y": 360,
+        "wires": [
+            [
+                "db9e1f4ac5902e5f"
+            ]
+        ]
+    },
+    {
+        "id": "92515511d77fee92",
+        "type": "function",
+        "z": "288b7a56ef9cfc13",
+        "name": "function 4",
+        "func": "msg.payload = Math.random() * 100\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 300,
+        "wires": [
+            [
+                "db9e1f4ac5902e5f"
+            ]
+        ]
+    },
+    {
+        "id": "d81df46efed7390c",
+        "type": "inject",
+        "z": "288b7a56ef9cfc13",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 300,
+        "wires": [
+            [
+                "92515511d77fee92"
+            ]
+        ]
     }
 ]
