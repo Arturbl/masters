@@ -32,12 +32,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
   bool _checkNameAndEmail() {
     String nome = _nomeController.text;
-    if (nome.isNotEmpty &&
-        _age != 0 &&
-        _height != 0 &&
-        _weight != 0 &&
-        _gender.isNotEmpty &&
-        _visibleText != '') {
+    if (nome.isNotEmpty) {
       if (nome.length <= 10) {
         return true;
       }
