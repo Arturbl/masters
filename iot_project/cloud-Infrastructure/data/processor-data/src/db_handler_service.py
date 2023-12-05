@@ -130,6 +130,23 @@ class DatabaseHandlerService:
             finally:
                 self.close_connection()
 
+    def register_user(self, username, password, age, gender, height, weight):
+        if self.validate_connection():
+            query = '''
+            INSERT INTO users (username, password, age, gender, height, weight)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            '''
+            data = (username, password, age, gender, height, weight)
+            try:
+                self.cursor.execute(query, data)
+                self.connection.commit()
+                return True
+            except mysql.connector.Error as err:
+                print(f"Error: {err}")
+                return False
+            finally:
+                self.close_connection()
+
     def health(self):
         error = None
         if self.validate_connection():

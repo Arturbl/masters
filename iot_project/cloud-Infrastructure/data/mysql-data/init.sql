@@ -22,6 +22,6 @@ CREATE TABLE users (
 );
 
 INSERT INTO users
-    (username, password)
+    (username, password, gender, age, height, weight)
 VALUES
-    ('artur', 'artur');
+    ('artur', 'artur' , 'M', 22, 175, 72);

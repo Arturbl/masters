@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app/login.dart';
 import 'package:app/home.dart';
+import 'RouteGenerator.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,12 +12,14 @@ void main() {
       primarySwatch: Colors.blue,
     ),
     home: App(),
+    initialRoute: '/',
+    onGenerateRoute: RouteGenerator.generateRoute,
   ));
 }
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Home();
+    return Login();
   }
 }

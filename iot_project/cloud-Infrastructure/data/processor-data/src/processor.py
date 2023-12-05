@@ -7,14 +7,17 @@ from datetime import datetime
 import db_handler_service as dbHandler
 import csv_handler_service as csvHandler
 import results_analyser as resultsAnalyser
+from flask_cors import CORS, cross_origin
 
 MODEL = "training-DT"
 
 app = Flask(__name__)
+CORS(app)
 db_handler_service = dbHandler.DatabaseHandlerService()
 
 
 @app.route('/processor', methods=['POST'])
+@cross_origin()
 def process_data():
     body = request.get_json()
     model_component = {"model": MODEL}
@@ -31,6 +34,7 @@ def process_data():
 
 
 @app.route('/login', methods=['POST'])
+@cross_origin()
 def validate_user():
     data = request.get_json()
     username = data.get('username')
@@ -39,7 +43,28 @@ def validate_user():
     return build_response(result)
 
 
+@app.route('/register', methods=['POST'])
+@cross_origin()
+def register():
+    try:
+        data = request.json
+        username = data.get('username')
+        password = data.get('password')
+        age = data.get('age')
+        gender = "M" if data.get('gender') == "Male" else "F"
+        height = data.get('height')
+        weight = data.get('weight')
+        response = db_handler_service.register_user(username, password, age, gender, height, weight)
+        if response:
+            return {"result": True}
+        return {"result": False}
+    except Exception as e:
+        error_message = {'error': str(e)}
+        return jsonify(error_message), 400
+
+
 @app.route('/history', methods=['GET'])
+@cross_origin()
 def get_history():
     dateBegin = request.args.get('dateBegin')
     dateEnd = request.args.get('dateEnd')
@@ -61,6 +86,7 @@ def get_history():
 
 
 @app.route('/health', methods=['GET'])
+@cross_origin()
 def health():
     result = db_handler_service.health()
     return build_response(result)

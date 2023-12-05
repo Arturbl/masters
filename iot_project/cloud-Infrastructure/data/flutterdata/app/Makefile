@@ -6,7 +6,7 @@ setup:
 	brew update
 	brew upgrade
 	brew cleanup
-	brew install rbenv 
+	brew install rbenv
 	rbenv install -s
 	rbenv exec gem update --system --no-document --quiet
 	rbenv exec gem install bundler -v 2.4.10
@@ -36,7 +36,7 @@ single-apk:
 web-build:
 	flutter clean
 	flutter pub get
-	flutter build web   --base-href '/'
+	flutter build web  --base-href '/' --web-renderer html
 
 dev-deploy:
 	sh dev-deploy.sh
@@ -50,3 +50,4 @@ docker-dev-apk:
 run-watch:
 	flutter pub get
 	flutter packages run app build watch --delete-conflicting-outputs --use-polling-watcher
+

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:app/colors.dart';
 import 'package:app/sizing.dart';
 
 class Login extends StatefulWidget {
@@ -48,14 +47,12 @@ class _LoginState extends State<Login> {
           automaticallyImplyLeading: false,
           title: Text(
             'Login',
-            style: TextStyle(color: PersonalizedColor.black),
           ),
-          backgroundColor: PersonalizedColor.red,
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: PersonalizedColor.black,
+          decoration: const BoxDecoration(
+            color: Colors.white,
           ),
           padding: const EdgeInsets.all(30),
           child: Center(
@@ -80,8 +77,7 @@ class _LoginState extends State<Login> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        prefixIcon:
-                            Icon(Icons.email, color: PersonalizedColor.black)),
+                        prefixIcon: Icon(Icons.email, color: Colors.black)),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
@@ -99,8 +95,7 @@ class _LoginState extends State<Login> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
-                          prefixIcon: Icon(Icons.vpn_key,
-                              color: PersonalizedColor.black)),
+                          prefixIcon: Icon(Icons.vpn_key, color: Colors.black)),
                     ),
                   ),
                   _error1 != null
@@ -108,8 +103,8 @@ class _LoginState extends State<Login> {
                           //padding: EdgeInsets.only(top: 5),
                           child: Center(
                             child: Text(_error1,
-                                style:
-                                    TextStyle(color: Colors.red, fontSize: 14)),
+                                style: TextStyle(
+                                    color: Colors.blue, fontSize: 14)),
                           ),
                         )
                       : Container(),
@@ -120,11 +115,11 @@ class _LoginState extends State<Login> {
                           ? Text(
                               'Login',
                               style: TextStyle(
-                                  color: PersonalizedColor.black,
+                                  color: Colors.black,
                                   fontSize: Sizing.fontSize),
                             )
                           : CircularProgressIndicator(
-                              color: PersonalizedColor.black,
+                              color: Colors.black,
                             ),
                       onPressed: () {
                         _validadeEmailAndPassword();
@@ -136,8 +131,7 @@ class _LoginState extends State<Login> {
                     child: GestureDetector(
                       onTap: () {
                         String email = _emailController.text;
-                        Navigator.of(context)
-                            .pushNamed('/createAccount', arguments: email);
+                        Navigator.of(context).pushNamed('/createAccount');
                       },
                       child: const Center(
                         child: Text(
