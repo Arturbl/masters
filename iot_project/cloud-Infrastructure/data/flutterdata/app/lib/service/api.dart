@@ -41,8 +41,52 @@ class Auth {
     }
   }
 
-  static Future<String> signIn(String email, String password) async {
-    // Implement sign-in logic here, if needed
-    return "done";
+  static Future<String> login(String username, String password) async {
+    final apiUrl = 'http://172.100.10.19:8081/login';
+
+    try {
+      final response = await http.post(
+        Uri.parse(apiUrl),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'username': username,
+          'password': password,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        bool result = jsonDecode(response.body);
+        if (result) {
+          return "Login successful";
+        } else {
+          return "Invalid username or password";
+        }
+      } else {
+        return "Failed to login. Status code: ${response.statusCode}";
+      }
+    } catch (error) {
+      return "Error: $error";
+    }
+  }
+
+  static Future<Map<String, dynamic>> getHistory(
+      String dateBegin, String dateEnd) async {
+    final apiUrl = 'http://172.100.10.19:8081/history';
+
+    try {
+      final response = await http
+          .get(Uri.parse('$apiUrl?dateBegin=$dateBegin&dateEnd=$dateEnd'));
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> historyData = jsonDecode(response.body);
+        return historyData;
+      } else {
+        print("Failed to fetch history. Status code: ${response.statusCode}");
+        return {'error': 'Failed to fetch history'};
+      }
+    } catch (error) {
+      print("Error: $error");
+      return {'error': 'An error occurred'};
+    }
   }
 }

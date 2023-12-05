@@ -100,6 +100,7 @@ class DatabaseHandlerService:
                      WHERE
                          ((datetime >= %s AND datetime < %s) OR
                          date(datetime) = date(%s))
+                     ORDER BY datetime
                  ) AS subquery
             '''
             values = (date_begin, date_end, date_begin)
@@ -180,7 +181,7 @@ class DatabaseHandlerService:
         return True
 
     def close_connection(self):
-        if self.is_db_connected and self.cursor is not None:
+        if self.is_db_connected and self.cursor:
             self.cursor.close()
             self.connection.close()
             self.is_db_connected = False

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:app/sizing.dart';
+import 'package:app/service/api.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -8,19 +9,30 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController _emailController =
-      new TextEditingController(text: 'arturesmavc@gmail.com');
+  TextEditingController _usernameController =
+      new TextEditingController(text: 'artur');
   TextEditingController _passwordController =
-      new TextEditingController(text: '1234567956526');
+      new TextEditingController(text: 'artur');
   String _error1 = '';
   bool _loading = false;
 
-  void _validadeEmailAndPassword() async {
+  void _validadeUsernameAndPassword() async {
     setState(() {
       _loading = true;
     });
-    String email = _emailController.text;
+    String username = _usernameController.text;
     String password = _passwordController.text;
+    if (username.isNotEmpty && password.isNotEmpty) {
+      Auth.login(_usernameController.text, _passwordController.text)
+          .then((value) => {
+                if (value == 'Login successful')
+                  {Navigator.of(context).pushNamed('/home')}
+                else
+                  {_setError(value)}
+              });
+    } else {
+      _setError("Empty fields");
+    }
   }
 
   void _setError(String error) {
@@ -64,20 +76,20 @@ class _LoginState extends State<Login> {
                 // crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   TextField(
-                    controller: _emailController,
+                    controller: _usernameController,
                     autofocus: true,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: 'Email',
+                        hintText: 'username',
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide(color: Colors.grey)),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        prefixIcon: Icon(Icons.email, color: Colors.black)),
+                        prefixIcon: Icon(Icons.person, color: Colors.black)),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
@@ -103,8 +115,8 @@ class _LoginState extends State<Login> {
                           //padding: EdgeInsets.only(top: 5),
                           child: Center(
                             child: Text(_error1,
-                                style: TextStyle(
-                                    color: Colors.blue, fontSize: 14)),
+                                style:
+                                    TextStyle(color: Colors.red, fontSize: 14)),
                           ),
                         )
                       : Container(),
@@ -122,7 +134,7 @@ class _LoginState extends State<Login> {
                               color: Colors.black,
                             ),
                       onPressed: () {
-                        _validadeEmailAndPassword();
+                        _validadeUsernameAndPassword();
                       },
                     ),
                   ),
@@ -130,7 +142,7 @@ class _LoginState extends State<Login> {
                     padding: EdgeInsets.only(top: 8),
                     child: GestureDetector(
                       onTap: () {
-                        String email = _emailController.text;
+                        String username = _usernameController.text;
                         Navigator.of(context).pushNamed('/createAccount');
                       },
                       child: const Center(
