@@ -36,7 +36,8 @@ class _CreateAccountState extends State<CreateAccount> {
         _age != 0 &&
         _height != 0 &&
         _weight != 0 &&
-        _gender.isNotEmpty) {
+        _gender.isNotEmpty &&
+        _visibleText != '') {
       if (nome.length <= 10) {
         return true;
       }
