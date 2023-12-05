@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "age_range": "20;29",
+      "male": 1.36,
+      "female": 1.34
+    },
+    {
+      "age_range": "30;39",
+      "male": 1.43,
+      "female": 1.34
+    },
+    {
+      "age_range": "40;49",
+      "male": 1.43,
+      "female": 1.39
+    },
+    {
+      "age_range": "50;59",
+      "male": 1.43,
+      "female": 1.31
+    },
+    {
+      "age_range": "60;69",
+      "male": 1.34,
+      "female": 1.24
+    },
+    {
+      "age_range": "70;79",
+      "male": 1.26,
+      "female": 1.13
+    },
+    {
+      "age_range": "80;89",
+      "male": 0.97,
+      "female": 0.94
+    }
+  ]
+}

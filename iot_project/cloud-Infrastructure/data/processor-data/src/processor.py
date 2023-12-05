@@ -52,13 +52,11 @@ def get_history():
         return jsonify({'error': 'Invalid date format'}), 400
     results = db_handler_service.get_history(dateBegin, dateEnd)
     if results:
-        analysed_results = resultsAnalyser.analyse(results)
-        return {
-            "total": len(results),
-            "result": analysed_results
-        }
+        analysed_results = resultsAnalyser.analyse(dateBegin, dateEnd, results)
+        return analysed_results
     return {
-        "error": "Could not find results for the given dates"
+        "error": "Could not find results for the given dates",
+        "results": results
     }
 
 
@@ -73,5 +71,5 @@ def build_response(response):
 
 
 if __name__ == '__main__':
-    csvHandler.main()
-    app.run(host='0.0.0.0', port=8081)
+    # csvHandler.main()
+    app.run(host='0.0.0.0', port=8083)

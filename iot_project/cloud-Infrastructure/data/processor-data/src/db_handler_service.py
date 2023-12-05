@@ -95,17 +95,33 @@ class DatabaseHandlerService:
         if self.validate_connection():
             query = '''
                 SELECT *
-                FROM movement
-                WHERE
-                    (
-                        (datetime >= :startDate AND datetime < :endDate) OR
-                        date(datetime) = :startDate
-                    )
+                FROM (
+                     SELECT * FROM movement
+                     WHERE
+                         ((datetime >= %s AND datetime < %s) OR
+                         date(datetime) = date(%s))
+                 ) AS subquery
             '''
-            values = (date_begin, date_end)
+            values = (date_begin, date_end, date_begin)
             try:
                 self.cursor.execute(query, values)
                 result = self.cursor.fetchall()
+                if result:
+                    return result
+                return None
+            except mysql.connector.Error as err:
+                return None
+            finally:
+                self.close_connection()
+
+    def get_user_data(self):
+        if self.validate_connection():
+            query = '''
+            SELECT * FROM users 
+            '''
+            try:
+                self.cursor.execute(query)
+                result = self.cursor.fetchone()
                 if result:
                     return result
                 return None

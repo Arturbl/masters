@@ -3,11 +3,8 @@ FROM python:3.9
 WORKDIR /app
 
 COPY requirements.txt /app
-COPY src/processor.py /app
-COPY src/db_handler_service.py /app
-COPY src/csv_handler_service.py /app
-COPY src/results_analyser.py /app
-COPY src/trainning.csv /app
+COPY src/ /app
+
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
