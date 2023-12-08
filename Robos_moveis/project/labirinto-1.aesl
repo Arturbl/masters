@@ -1,12 +1,4 @@
-<!DOCTYPE aesl-source>
-<network>
-
-
-<!--list of global events-->
-
-
-<!--node Dispositivo de S�rie USB-->
-<node nodeId="{c93e525c-191e-4c0c-a955-2acb432295dc}" name="Dispositivo de S�rie USB"><![CDATA[var currentState[4] = [0, 0, 0, 0]
+var currentState[4] = [0, 0, 0, 0]
 var newState[4] = [0, 0, 0, 0]
 
 timer.period[0] = 0
@@ -101,8 +93,3 @@ onevent timer0
 
     call math.copy(currentState, newState)
     callsub displayState
-
-]]></node>
-
-
-</network>
