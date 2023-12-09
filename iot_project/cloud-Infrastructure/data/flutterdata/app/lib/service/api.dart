@@ -10,7 +10,7 @@ class Auth {
     int height,
     int weight,
   ) async {
-    final apiUrl = 'http://172.100.10.19:8081/register';
+    final apiUrl = 'http://localhost:8081/register';
 
     try {
       final response = await http.post(
@@ -42,7 +42,7 @@ class Auth {
   }
 
   static Future<String> login(String username, String password) async {
-    final apiUrl = 'http://172.100.10.19:8081/login';
+    final apiUrl = 'http://localhost:8081/login';
 
     try {
       final response = await http.post(
@@ -71,7 +71,7 @@ class Auth {
 
   static Future<Map<String, dynamic>> getHistory(
       String dateBegin, String dateEnd) async {
-    final apiUrl = 'http://172.100.10.19:8081/history';
+    final apiUrl = 'http://localhost:8081/history';
 
     try {
       final response = await http
