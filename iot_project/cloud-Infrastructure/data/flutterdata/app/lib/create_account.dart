@@ -25,10 +25,8 @@ class _CreateAccountState extends State<CreateAccount> {
   final List<String> genderOptions = ['Male', 'Female'];
 
   TextEditingController _nomeController = TextEditingController();
-  TextEditingController _senhaController =
-      TextEditingController(text: "1234567956526");
-  TextEditingController _senhaConfirmController =
-      TextEditingController(text: "1234567956526");
+  TextEditingController _senhaController = TextEditingController();
+  TextEditingController _senhaConfirmController = TextEditingController();
 
   bool _checkNameAndEmail() {
     String nome = _nomeController.text;

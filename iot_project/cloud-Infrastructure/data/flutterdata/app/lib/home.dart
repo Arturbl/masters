@@ -53,8 +53,7 @@ class _HomeState extends State<Home> {
         actions: [
           IconButton(
             onPressed: () {
-              // Add your logout logic here
-              // Navigator.pushReplacementNamed(context, '/login');
+              Navigator.pushReplacementNamed(context, '/login');
             },
             icon: Icon(Icons.logout),
           ),

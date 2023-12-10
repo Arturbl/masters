@@ -9,10 +9,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController _usernameController =
-      new TextEditingController(text: 'artur');
-  TextEditingController _passwordController =
-      new TextEditingController(text: 'artur');
+  TextEditingController _usernameController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
   String _error1 = '';
   bool _loading = false;
 
