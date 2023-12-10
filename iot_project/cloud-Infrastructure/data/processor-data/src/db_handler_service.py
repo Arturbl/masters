@@ -21,6 +21,23 @@ class DatabaseHandlerService:
         self.connection = None
         self.cursor = None
 
+    def save(self, row):
+        if self.validate_connection():
+            values = [val for val in row[1:]]
+            insert_query = '''
+            INSERT INTO movement
+                (activity, acceleration_x, acceleration_y, acceleration_z, gyro_x, gyro_y, gyro_z, datetime)
+            VALUES
+                (%s, %s, %s, %s, %s, %s, %s, %s)
+            '''
+            try:
+                self.cursor.execute(insert_query, values)
+                self.connection.commit()
+                return True
+            except mysql.connector.Error as err:
+                logging.error(f"Error executing SQL query: {err}")
+        return False
+
     def save_data_frame(self, data_frame):
         if self.validate_connection():
             try:
@@ -98,14 +115,16 @@ class DatabaseHandlerService:
             query = '''
                 SELECT *
                 FROM (
-                     SELECT * FROM movement
+                     SELECT *
+                     FROM movement
                      WHERE
-                         ((datetime >= %s AND datetime < %s) OR
-                         date(datetime) = date(%s))
-                     ORDER BY datetime
+                        (DATE(datetime) = %s and DATE(datetime) = %s)
+                        OR 
+                        (DATE(datetime) BETWEEN %s AND %s)
+                     ORDER BY datetime ASC
                  ) AS subquery
             '''
-            values = (date_begin, date_end, date_begin)
+            values = (date_begin, date_end, date_begin, date_end)
             try:
                 self.cursor.execute(query, values)
                 result = self.cursor.fetchall()

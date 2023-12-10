@@ -92,6 +92,7 @@ def get_history_real_time():
     results = db_handler_service.get_history_real_time()
 
     if results is not None:
+        db_handler_service.save(results[0])
         return {
             "speed": speed,
             "last_row": results

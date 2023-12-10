@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
-
+import 'package:app/service/api.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:app/service/api.dart';
 import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
@@ -24,25 +23,22 @@ class _HomeState extends State<Home> {
   Duration totalWalkingTime = Duration.zero;
   double totalDistance = 0.0;
   double totalSpeed = 0.0;
+  String _noActivityMessage = '';
+  String dateRangeText = 'Select a date range';
 
-  @override
-  void initState() {
-    super.initState();
-    fetchDataForTimeFrame("2023-07-01", "2023-07-01");
-  }
-
-  Future<void> fetchDataForTimeFrame(String startDate, String endDate) async {
+  void fetchDataForTimeFrame(String startDate, String endDate) {
     try {
-      Auth.getHistory(startDate, endDate)
-          .then((result) => {setData(result['result'])});
+      final client = http.Client();
+      Auth.getHistory(startDate, endDate).then((result) {
+        setData(result['result']);
+        client.close();
+      });
     } catch (error) {
-      // Handle errors
       print("Error fetching history: $error");
     }
   }
 
   void setData(List<dynamic> result) {
-    print("result: ${result}");
     setState(() {
       fitnessData = result;
     });
@@ -109,11 +105,47 @@ class _HomeState extends State<Home> {
               ],
             ),
             const SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                if (_startDate != null && _endDate != null) {
+                  final startDateString =
+                      DateFormat('yyyy-MM-dd').format(_startDate!);
+                  final endDateString =
+                      DateFormat('yyyy-MM-dd').format(_endDate!);
+                  fetchDataForTimeFrame(startDateString, endDateString);
+                  setState(() {
+                    dateRangeText =
+                        'Selected Date Range: $startDateString - $endDateString';
+                  });
+                } else {
+                  // Handle case where dates are not selected
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Please select start and end dates.'),
+                    ),
+                  );
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                onPrimary: Colors.white,
+              ),
+              child: Text('Submit'),
+            ),
+            const SizedBox(height: 16.0),
+            Text(
+              dateRangeText,
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 16.0),
             if (!isRecording)
               Expanded(
                 child: _buildDataTable(),
               ),
-            if (walkingStartTime != null)
+            if (isRecording && walkingStartTime != null)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Column(
@@ -149,6 +181,10 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
+            Text(
+              _noActivityMessage,
+              style: TextStyle(fontSize: 16.0, color: Colors.red),
+            ),
           ],
         ),
       ),
@@ -169,26 +205,30 @@ class _HomeState extends State<Home> {
   }
 
   Widget _buildDataTable() {
-    return DataTable(
-      columns: [
-        DataColumn(label: Text('day')),
-        DataColumn(label: Text('Calories Walking')),
-        DataColumn(label: Text('Calories Running')),
-        DataColumn(label: Text('Running Time')),
-        DataColumn(label: Text('Walking Time'))
-      ],
-      rows: fitnessData.map((data) {
-        return DataRow(
-          cells: [
-            DataCell(Text(data['day'])),
-            DataCell(Text(data['calories_walking'].toString())),
-            DataCell(Text(data['calories_running'].toString())),
-            DataCell(Text(data['running'].toString())),
-            DataCell(Text(data['walking'].toString()))
-          ],
-        );
-      }).toList(),
-    );
+    return fitnessData.isNotEmpty
+        ? SingleChildScrollView(
+            child: DataTable(
+              columns: [
+                DataColumn(label: Text('day')),
+                DataColumn(label: Text('Calories Walking')),
+                DataColumn(label: Text('Calories Running')),
+                DataColumn(label: Text('Running Time')),
+                DataColumn(label: Text('Walking Time'))
+              ],
+              rows: fitnessData.map((data) {
+                return DataRow(
+                  cells: [
+                    DataCell(Text(data['day'])),
+                    DataCell(Text(data['calories_walking'].toString())),
+                    DataCell(Text(data['calories_running'].toString())),
+                    DataCell(Text(data['running'].toString())),
+                    DataCell(Text(data['walking'].toString()))
+                  ],
+                );
+              }).toList(),
+            ),
+          )
+        : Container();
   }
 
   Future<void> _selectDate(BuildContext context, bool isStartDate) async {
@@ -207,8 +247,6 @@ class _HomeState extends State<Home> {
           _endDate = pickedDate;
         }
       });
-      // Update your timeframe and reload data here
-      // fetchDataForTimeFrame(_startDate, _endDate);
     }
   }
 
@@ -222,10 +260,20 @@ class _HomeState extends State<Home> {
           final response = await http.get(uri);
 
           if (response.statusCode == 200) {
-            processData(json.decode(response.body));
+            if (json.decode(response.body)['last_row'].isNotEmpty) {
+              processData(json.decode(response.body));
+              setState(() {
+                _noActivityMessage = '';
+              });
+            } else {
+              setState(() {
+                _noActivityMessage = 'No activities are currently occurring.';
+              });
+            }
           } else {
-            print(
-                'Failed to fetch health data. Status code: ${response.statusCode}');
+            setState(() {
+              _noActivityMessage = 'Could not load data.';
+            });
           }
         } catch (e) {
           print('Error during HTTP request: $e');
@@ -253,7 +301,7 @@ class _HomeState extends State<Home> {
       final accelerationZ = data["last_row"][0][4] as double;
       final speed = data["speed"];
 
-      totalDistance += speed * deltaTime.inSeconds;
+      totalDistance += speed;
       totalSpeed = speed;
 
       totalWalkingTime = deltaTime;
