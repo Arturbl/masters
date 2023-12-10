@@ -117,6 +117,28 @@ class DatabaseHandlerService:
             finally:
                 self.close_connection()
 
+    def get_history_real_time(self):
+        if self.validate_connection():
+            query = '''
+                SELECT *
+                FROM (
+                     SELECT *
+                     FROM online
+                     ORDER BY datetime DESC, id DESC
+                     LIMIT 1
+                 ) AS subquery;
+            '''
+            try:
+                self.cursor.execute(query)
+                result = self.cursor.fetchall()
+                if result:
+                    return result
+                return None
+            except mysql.connector.Error as err:
+                return None
+            finally:
+                self.close_connection()
+
     def get_user_data(self):
         if self.validate_connection():
             query = '''
@@ -129,6 +151,24 @@ class DatabaseHandlerService:
                     return result
                 return None
             except mysql.connector.Error as err:
+                return None
+            finally:
+                self.close_connection()
+
+    def get_user_data_by_username(self, username):
+        if self.validate_connection():
+            query = '''
+                SELECT * FROM users where username = (%s)
+            '''
+            values = (username, )
+            try:
+                self.cursor.execute(query, values)
+                result = self.cursor.fetchone()
+                if result:
+                    return result
+                return None
+            except mysql.connector.Error as err:
+                print(err)
                 return None
             finally:
                 self.close_connection()

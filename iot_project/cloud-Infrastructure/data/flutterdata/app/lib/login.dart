@@ -26,7 +26,10 @@ class _LoginState extends State<Login> {
       Auth.login(_usernameController.text, _passwordController.text)
           .then((value) => {
                 if (value == 'Login successful')
-                  {Navigator.of(context).pushNamed('/home')}
+                  {
+                    Navigator.of(context)
+                        .pushNamed('/home', arguments: username)
+                  }
                 else
                   {_setError(value)}
               });

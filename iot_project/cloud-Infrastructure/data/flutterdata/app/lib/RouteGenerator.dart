@@ -14,7 +14,9 @@ class RouteGenerator {
       case '/login':
         return MaterialPageRoute(builder: (context) => Login());
       case '/home':
-        return MaterialPageRoute(builder: (context) => Home());
+        String username = args.toString();
+        return MaterialPageRoute(
+            builder: (context) => Home(username: username));
       default:
         return _errorRoute();
     }

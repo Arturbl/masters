@@ -22,7 +22,7 @@ class MqttPublisher:
         while True:
             payload = self.csv_handler_service.generate_payload_instance()
             self.sub_pub.send_message("idc/fitness", payload)
-            time.sleep(5)
+            time.sleep(1)
 
     def run(self):
         self.build_client()

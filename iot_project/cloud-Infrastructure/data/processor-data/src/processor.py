@@ -7,17 +7,15 @@ from datetime import datetime
 import db_handler_service as dbHandler
 import csv_handler_service as csvHandler
 import results_analyser as resultsAnalyser
-from flask_cors import CORS, cross_origin
+import user_data_service as userDataService
 
 MODEL = "training-DT"
 
 app = Flask(__name__)
-CORS(app)
 db_handler_service = dbHandler.DatabaseHandlerService()
 
 
 @app.route('/processor', methods=['POST'])
-@cross_origin()
 def process_data():
     body = request.get_json()
     model_component = {"model": MODEL}
@@ -34,7 +32,6 @@ def process_data():
 
 
 @app.route('/login', methods=['POST'])
-@cross_origin()
 def validate_user():
     data = request.get_json()
     username = data.get('username')
@@ -44,7 +41,6 @@ def validate_user():
 
 
 @app.route('/register', methods=['POST'])
-@cross_origin()
 def register():
     try:
         data = request.json
@@ -64,7 +60,6 @@ def register():
 
 
 @app.route('/history', methods=['GET'])
-@cross_origin()
 def get_history():
     dateBegin = request.args.get('dateBegin')
     dateEnd = request.args.get('dateEnd')
@@ -85,8 +80,27 @@ def get_history():
     }
 
 
+@app.route('/history-real-time', methods=['GET'])
+def get_history_real_time():
+    username = request.args.get('username')
+    user_result = db_handler_service.get_user_data_by_username(username)
+
+    if user_result is None:
+        return jsonify({"error": "User not found"}), 404
+
+    speed = userDataService.get_speed(user_result[4], user_result[3])
+    results = db_handler_service.get_history_real_time()
+
+    if results is not None:
+        return {
+            "speed": speed,
+            "last_row": results
+        }
+    else:
+        return jsonify({"result": "no activities found"}), 404
+
+
 @app.route('/health', methods=['GET'])
-@cross_origin()
 def health():
     result = db_handler_service.health()
     return build_response(result)
