@@ -9,6 +9,7 @@ class CsvHandlerService:
 
     def __init__(self):
         self.df = pd.read_csv(self.FILE_PATH, sep=';')
+        self.index = 0
 
     def generate_payload_instance(self):
         row = self._get_random_row()
@@ -22,6 +23,10 @@ class CsvHandlerService:
         return payload_dto
 
     def _get_random_row(self):
+        print(f'index: {self.index}')
         csv_size = len(self.df)
-        line = random.randint(1, csv_size)
-        return self.df.iloc[line - 1]
+        if self.index <= csv_size:
+            self.index += 1
+        else:
+            self.index = 0
+        return self.df.iloc[self.index - 1]

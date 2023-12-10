@@ -3,6 +3,7 @@ import logging
 import time
 import mysql.connector
 import pandas as pd
+from datetime import datetime
 
 logging.basicConfig(level=logging.INFO)
 
@@ -40,16 +41,17 @@ class DatabaseHandlerService:
             return True
         return False
 
-
-    def save(self, json_payload, activity):
+    def save_online(self, json_payload, activity):
         if self.validate_connection():
             insert_query = '''
-            INSERT INTO movement
+            INSERT INTO online
                 (activity, acceleration_x, acceleration_y, acceleration_z, gyro_x, gyro_y, gyro_z)
             VALUES
                 (%s, %s, %s, %s, %s, %s, %s)
             '''
             values = self.build_movement_params(json_payload, activity)
+            # current_datetime = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+            # values = values + (current_datetime,)
             try:
                 self.cursor.execute(insert_query, values)
                 self.connection.commit()
@@ -171,7 +173,7 @@ class DatabaseHandlerService:
                 self.is_db_connected = True
                 return True
             except mysql.connector.Error as err:
-                logging.info(f"Database connection failed: {err}")
+                logging.info(f"Database initializing...")
                 time.sleep(3)
         return self.is_db_connected
 

@@ -10,6 +10,18 @@ CREATE TABLE movement (
     datetime DATETIME DEFAULT NULL
 );
 
+CREATE TABLE online (
+      id SERIAL PRIMARY KEY,
+      activity INT,
+      acceleration_x FLOAT,
+      acceleration_y FLOAT,
+      acceleration_z FLOAT,
+      gyro_x FLOAT,
+      gyro_y FLOAT,
+      gyro_z FLOAT,
+      datetime DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,

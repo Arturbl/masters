@@ -28,7 +28,7 @@ def process_data():
     with requests.post(url, data=json_payload, headers=headers) as response:
         if response.status_code == 200:
             activity_prediction = response.json()['prediction']
-            result = db_handler_service.save(json_payload, activity_prediction)
+            result = db_handler_service.save_online(json_payload, activity_prediction)
             return json_payload if result else "Database not recheable"
     return "Could not process data"
 

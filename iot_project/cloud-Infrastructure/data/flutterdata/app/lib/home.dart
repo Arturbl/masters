@@ -1,12 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:app/service/api.dart';
-
-void main() {
-  runApp(MaterialApp(
-    home: Home(),
-  ));
-}
+import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -18,8 +15,14 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   DateTime? _startDate;
   DateTime? _endDate;
-
   List<dynamic> fitnessData = [];
+  bool isRecording = false;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDataForTimeFrame("2023-07-01", "2023-07-01");
+  }
 
   Future<void> fetchDataForTimeFrame(String startDate, String endDate) async {
     try {
@@ -36,12 +39,6 @@ class _HomeState extends State<Home> {
     setState(() {
       fitnessData = result;
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    fetchDataForTimeFrame("2023-07-01", "2023-07-01");
   }
 
   @override
@@ -105,11 +102,25 @@ class _HomeState extends State<Home> {
               ],
             ),
             const SizedBox(height: 16.0),
-            Expanded(
-              child: _buildDataTable(),
-            ),
+            if (!isRecording)
+              Expanded(
+                child: _buildDataTable(),
+              ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            isRecording = !isRecording;
+            if (isRecording) {
+              _startHttpRequest();
+            } else {
+              // Stop the HTTP request (if needed)
+            }
+          });
+        },
+        child: Icon(isRecording ? Icons.stop : Icons.play_arrow),
       ),
     );
   }
@@ -156,5 +167,23 @@ class _HomeState extends State<Home> {
       // Update your timeframe and reload data here
       // fetchDataForTimeFrame(_startDate, _endDate);
     }
+  }
+
+  void _startHttpRequest() {
+    Timer.periodic(Duration(seconds: 2), (Timer timer) async {
+      try {
+        final response =
+            await http.get(Uri.parse('http://localhost:8081/health'));
+
+        if (response.statusCode == 200) {
+          print('Health check response: ${response.body}');
+        } else {
+          print(
+              'Failed to fetch health data. Status code: ${response.statusCode}');
+        }
+      } catch (e) {
+        print('Error during HTTP request: $e');
+      }
+    });
   }
 }
