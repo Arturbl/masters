@@ -3,3 +3,4 @@ Flask
 mysql-connector-python
 numpy
 pandas
+flask-cors

@@ -44,6 +44,7 @@ class Auth {
   static Future<String> login(String username, String password) async {
     final apiUrl = 'http://localhost:8081/login';
 
+
     try {
       final response = await http.post(
         Uri.parse(apiUrl),
@@ -57,15 +58,18 @@ class Auth {
       if (response.statusCode == 200) {
         bool result = jsonDecode(response.body);
         if (result) {
+          print("WE GOT THE RESULT SUCCESFULL");
           return "Login successful";
         } else {
+          print("WE GOT THE RESULT un---SUCCESFULL");
           return "Invalid username or password";
         }
       } else {
+        print("WE GOT THE RESULT un---SUCCESFULL ${response.statusCode}");
         return "Failed to login. Status code: ${response.statusCode}";
       }
     } catch (error) {
-      return "Error: $error";
+      return "Error???: $error";
     }
   }
 

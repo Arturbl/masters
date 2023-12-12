@@ -8,14 +8,17 @@ import db_handler_service as dbHandler
 import csv_handler_service as csvHandler
 import results_analyser as resultsAnalyser
 import user_data_service as userDataService
+from flask_cors import CORS, cross_origin
 
 MODEL = "training-DT"
 
 app = Flask(__name__)
+CORS(app)
 db_handler_service = dbHandler.DatabaseHandlerService()
 
 
 @app.route('/processor', methods=['POST'])
+@cross_origin()
 def process_data():
     body = request.get_json()
     model_component = {"model": MODEL}
@@ -32,6 +35,7 @@ def process_data():
 
 
 @app.route('/login', methods=['POST'])
+@cross_origin()
 def validate_user():
     data = request.get_json()
     username = data.get('username')
@@ -41,6 +45,7 @@ def validate_user():
 
 
 @app.route('/register', methods=['POST'])
+@cross_origin()
 def register():
     try:
         data = request.json
@@ -60,6 +65,7 @@ def register():
 
 
 @app.route('/history', methods=['GET'])
+@cross_origin()
 def get_history():
     dateBegin = request.args.get('dateBegin')
     dateEnd = request.args.get('dateEnd')
@@ -81,6 +87,7 @@ def get_history():
 
 
 @app.route('/history-real-time', methods=['GET'])
+@cross_origin()
 def get_history_real_time():
     username = request.args.get('username')
     user_result = db_handler_service.get_user_data_by_username(username)
@@ -102,6 +109,7 @@ def get_history_real_time():
 
 
 @app.route('/health', methods=['GET'])
+@cross_origin()
 def health():
     result = db_handler_service.health()
     return build_response(result)
